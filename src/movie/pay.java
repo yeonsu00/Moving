@@ -14,25 +14,26 @@ public class pay extends JFrame {
         setTitle("예매확인");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel num,money,result;
-        JPanel top,mid;
+        JPanel top,mid,bot;
         top=new JPanel( new GridLayout(4,2));
-        mid=new JPanel(new FlowLayout());
-        JRadioButton [] pay = new JRadioButton [4]; // 라디오버튼 배열
+        mid=new JPanel(new GridLayout(2,3));
+        bot=new JPanel(new GridLayout(1,1));
+        JRadioButton [] pay = new JRadioButton [4]; // 버튼 배열
         JButton bt = new JButton("선택");
 
         //top 패널 예매결과 출력
         num=new JLabel("총 인원");
-        num.setHorizontalAlignment(JLabel.CENTER);
+        //num.setHorizontalAlignment(JLabel.CENTER);
         top.add(num);
         top.add(new JLabel("1명"));
 
         money=new JLabel("총 결제금액");
-        money.setHorizontalAlignment(JLabel.CENTER);
+        //money.setHorizontalAlignment(JLabel.CENTER);
         top.add(money);
         top.add(new JLabel("7000원"));
 
         result=new JLabel("결제 필요금액");
-        result.setHorizontalAlignment(JLabel.CENTER);
+        //result.setHorizontalAlignment(JLabel.CENTER);
         top.add(result);
         top.add(new JLabel("7000원"));
         top.setBorder(new TitledBorder("예매확인"));
@@ -49,15 +50,16 @@ public class pay extends JFrame {
         jb.add(pay[2]);
         jb.add(pay[3]);
         mid.setBorder(new TitledBorder("결제방법"));//테두리 꾸미기
-        mid.add(bt);
+        //최하단 패널
+        bot.add(bt);
 
 
         //각 창 추가
         add(top,BorderLayout.NORTH);
         add(mid,BorderLayout.CENTER);
-        //add(bot,BorderLayout.SOUTH);
+        add(bot,BorderLayout.SOUTH);
 
-        setSize(420,240);
+        setSize(300,300);
         setVisible(true);
 
         //버튼 리스너
