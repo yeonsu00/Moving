@@ -14,7 +14,7 @@ class PayPhone extends JFrame implements ActionListener {
 
     PayPhone() {
         setTitle("Pay phone");
-        setSize(420,240);
+        setSize(300,300);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();

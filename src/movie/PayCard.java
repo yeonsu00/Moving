@@ -61,7 +61,7 @@ class PayCard extends JFrame implements ActionListener {
                 setVisible(false);
             }
         });
-        setSize(420,240);
+        setSize(300,300);
         setVisible(true);
     }
 

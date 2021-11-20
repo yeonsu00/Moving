@@ -14,7 +14,7 @@ class PayKakao extends JFrame implements ActionListener {
 
     PayKakao() {
         setTitle("Kakao pay");
-        setSize(420,240);
+        setSize(300,300);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();

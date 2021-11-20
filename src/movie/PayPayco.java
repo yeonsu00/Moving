@@ -14,7 +14,7 @@ class PayPayco extends JFrame implements ActionListener {
 
     PayPayco() {
         setTitle("Payco pay");
-        setSize(420,240);
+        setSize(300,300);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();
