@@ -22,10 +22,10 @@ public class pay extends JFrame {
         bot=new JPanel(new GridLayout(1,1));
         JRadioButton [] pay = new JRadioButton [4]; // 버튼 배열
 
-        //결제도구 이미지 처리
+        //결제도구 이미지 처리 이미지파일 경로재수정해야됨
         //card 이미지 처리
         ImageIcon cardImage = new ImageIcon("\\Users\\user\\IdeaProjects\\Moving\\src\\movie\\images\\cardButton.png");
-        //이미지를 실제로 갖고 있는 Image객체 뽑아오기
+        //이미지를 실제로 갖고 있는 Image 객체 뽑아오기
         Image card = cardImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
         Image card2 = card.getScaledInstance(50, 50, Image.SCALE_DEFAULT);
