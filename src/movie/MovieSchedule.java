@@ -44,8 +44,7 @@ public class MovieSchedule implements Manageable {
         return false;
     }
 
-    static void movieEnd(int movieStartHour,
-                         int movieStartMinute, int runningTime) {
+    static void movieEnd(int movieStartHour, int movieStartMinute, int runningTime) {
         int hour;
         int minute;
         hour = runningTime / 60;
