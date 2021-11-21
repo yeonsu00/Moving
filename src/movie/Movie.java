@@ -5,6 +5,7 @@ import java.util.Scanner;
 import mgr.Manageable;
 
 public class Movie implements Manageable {
+    //A1001 장르만로맨스 15 113 14000
     String movieCode;
     String movieName;
     String ageLimit;
@@ -31,7 +32,7 @@ public class Movie implements Manageable {
     @Override
     public boolean matches(String kwd) {
         // TODO Auto-generated method stub
-        if (kwd.length() > 2 && movieCode.contains(kwd))
+        if (kwd.length() > 2 && movieCode.equals(kwd))
             return true;
         if(movieName.contains("kwd"))
             return true;
@@ -39,8 +40,10 @@ public class Movie implements Manageable {
             return true;
         if(kwd.equals(""+time))
             return true;
-        if(kwd.equals(""+price))
-            return true;
         return false;
+    }
+
+    void addMovieSchedule(MovieSchedule movieSchedule){
+        scheduleList.add(movieSchedule);
     }
 }
