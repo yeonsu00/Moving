@@ -27,6 +27,11 @@ public class Movie implements Manageable {
     public void print() {
         System.out.printf("[%s] %s\t%s세\t상영시간:%d분\t가격:%d원",movieCode,movieName,ageLimit,time,price);
         System.out.println();
+        System.out.printf("[%s 상영스케줄]\n", movieName);
+        for(MovieSchedule m: scheduleList){
+            m.print();
+        }
+        System.out.println();
     }
 
     @Override
@@ -43,7 +48,7 @@ public class Movie implements Manageable {
         return false;
     }
 
-    void addMovieSchedule(MovieSchedule movieSchedule){
+    void addMovieSchedule(MovieSchedule movieSchedule) {
         scheduleList.add(movieSchedule);
     }
 }

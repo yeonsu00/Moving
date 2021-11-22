@@ -102,6 +102,10 @@ public class Kiosk {
         return scheduleMgr.find(kwd);
     }
 
+    static Movie findMovie(String kwd) {
+        return movieMgr.find(kwd);
+    }
+
 //	static Item findItem(String kwd) {
 //		return (Item) itemMgr.find(kwd);
 //	}
