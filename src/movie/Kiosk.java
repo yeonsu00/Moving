@@ -17,11 +17,11 @@ public class Kiosk {
     static Manager<Seat> seatMgr = new Manager();
 
     void run() {
-        userMgr.readAll("members.txt", new Factory<User>() {
-            public User create() {
-                return new User();
-            }
-        });
+//        userMgr.readAll("members.txt", new Factory<User>() {
+//            public User create() {
+//                return new User();
+//            }
+//        });
         movieMgr.readAll("movie.txt", new Factory<Movie>() {
             public Movie create() {
                 return new Movie();
