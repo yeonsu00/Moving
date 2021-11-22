@@ -17,7 +17,7 @@ public class Kiosk {
     static Manager<Seat> seatMgr = new Manager();
 
     void run() {
-        userMgr.readAll("user.txt", new Factory<User>() {
+        userMgr.readAll("members.txt", new Factory<User>() {
             public User create() {
                 return new User();
             }

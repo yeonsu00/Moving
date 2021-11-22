@@ -12,9 +12,9 @@ public class MovieSchedule implements Manageable {
     static int movieEndHour;
     static int movieEndMinute;
     int runningTime;	//분단위
-    int theaterNumber;	//1,2,3관 백신패스관("0")
+    int theaterNumber;	//1,20(백신패스관),30(백신패스관),40(백신패스관),50(백신패스관),6,7,8,9관
 
-    //A1 17 30 150 3
+    //A1003 8 45 100 30
     @Override
     public void read(Scanner scan) {
         // TODO Auto-generated method stub
@@ -28,13 +28,19 @@ public class MovieSchedule implements Manageable {
     @Override
     public void print() {
         // TODO Auto-generated method stub
-        System.out.printf("[%s] %d:%d ~ ",
-                movieCode, movieStartHour, movieStartMinute);
+        if(movieStartHour < 10 && movieStartMinute < 10)
+            System.out.printf("[%s] 0%d:0%d ~ ",movieCode, movieStartHour, movieStartMinute);
+        else if(movieStartHour < 10 && movieStartMinute > 10)
+            System.out.printf("[%s] 0%d:%d ~ ",movieCode, movieStartHour, movieStartMinute);
+        else if(movieStartHour > 10 && movieStartMinute < 10)
+            System.out.printf("[%s] %d:0%d ~ ",movieCode, movieStartHour, movieStartMinute);
+        else
+            System.out.printf("[%s] %d:%d ~ ", movieCode, movieStartHour, movieStartMinute);
         movieEnd(movieStartHour, movieStartMinute, runningTime);
-        if(theaterNumber != 0)
+        if(theaterNumber % 10 != 0)
             System.out.printf("%d관\n", theaterNumber);
         else
-            System.out.printf("백신 패스관\n");
+            System.out.printf("%d관(백신 패스관)\n", theaterNumber/10);
     }
 
     @Override
@@ -57,6 +63,14 @@ public class MovieSchedule implements Manageable {
         }
         if (movieEndHour >= 24)
             movieEndHour -= 24;
-        System.out.printf("%d:%d\t", movieEndHour, movieEndMinute);
+
+        if(movieEndHour < 10 && movieEndMinute < 10)
+            System.out.printf("0%d:0%d\t", movieEndHour, movieEndMinute);
+        else if(movieEndHour < 10 && movieEndMinute > 10)
+            System.out.printf("0%d:%d\t", movieEndHour, movieEndMinute);
+        else if(movieEndHour > 10 && movieEndMinute < 10)
+            System.out.printf("%d:0%d\t", movieEndHour, movieEndMinute);
+        else
+            System.out.printf("%d:%d\t", movieEndHour, movieEndMinute);
     }
 }

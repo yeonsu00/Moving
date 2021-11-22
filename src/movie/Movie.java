@@ -25,7 +25,7 @@ public class Movie implements Manageable {
 
     @Override
     public void print() {
-        System.out.printf("%s %s %s %d %d",movieCode,movieName,ageLimit,time,price);
+        System.out.printf("[%s] %s\t%s세\t상영시간:%d분\t가격:%d원",movieCode,movieName,ageLimit,time,price);
         System.out.println();
     }
 

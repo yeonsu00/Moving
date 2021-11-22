@@ -27,6 +27,8 @@ public class movieReservation extends JFrame {
     ImageIcon changeIcon7;
     ImageIcon changeIcon8;
     ImageIcon changeIcon9;
+    ImageIcon changeIcon10;
+    ImageIcon changeIcon11;
 
     public void setFrame() {
 
@@ -124,6 +126,16 @@ public class movieReservation extends JFrame {
         Image im9 = image9.getImage();
         Image changeImg9 = im9.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon9 = new ImageIcon(changeImg9);
+
+        ImageIcon image10 = new ImageIcon("image/image10.png");
+        Image im10 = image10.getImage();
+        Image changeImg10 = im10.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
+        changeIcon10 = new ImageIcon(changeImg10);
+
+        ImageIcon image11 = new ImageIcon("image/image11.png");
+        Image im11 = image11.getImage();
+        Image changeImg11 = im11.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
+        changeIcon11 = new ImageIcon(changeImg11);
     }
     JPanel centerPanel() {
 
@@ -140,6 +152,8 @@ public class movieReservation extends JFrame {
         JLabel la7 = new JLabel(changeIcon7);
         JLabel la8 = new JLabel(changeIcon8);
         JLabel la9 = new JLabel(changeIcon9);
+        JLabel la10 = new JLabel(changeIcon10);
+        JLabel la11 = new JLabel(changeIcon11);
         JLabel jbutton1 = new JLabel();
 
         jpanel.add(jbutton1);
@@ -152,6 +166,8 @@ public class movieReservation extends JFrame {
         jpanel.add(la7);
         jpanel.add(la8);
         jpanel.add(la9);
+        jpanel.add(la10);
+        jpanel.add(la11);
 
         la1.addMouseListener(new MouseAdapter() {
             @Override
