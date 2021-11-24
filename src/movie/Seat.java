@@ -11,17 +11,22 @@ import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Scanner;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
-public class Seat extends JFrame implements Manageable {
-
+public class Seat extends JFrame implements Manageable{
+    String[] curSeat = new String[16];
+    JButton[][] seatArray;
     Seat() {
         setTitle("자리 예매");
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         super.setPreferredSize(new Dimension(1000, 600));
@@ -44,13 +49,21 @@ public class Seat extends JFrame implements Manageable {
 
         JPanel operButtonPanel = new JPanel(new FlowLayout());
         JButton goBack = new JButton("←");
+
         JButton goForward = new JButton("→");
+        goForward.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new movie.pay();
+            }
+        });
         goBack.setPreferredSize(new Dimension(60, 30));
         goForward.setPreferredSize(new Dimension(60, 30));
         operButtonPanel.add(goBack);
         operButtonPanel.add(goForward);
         operButtonPanel.setPreferredSize(new Dimension(70, 0));
         allScreen.add(operButtonPanel, BorderLayout.WEST); // 스크린 추가
+
         add(allScreen);
 
         JPanel allSeatPanel = new JPanel();
@@ -72,15 +85,34 @@ public class Seat extends JFrame implements Manageable {
         JPanel aisle2 = new JPanel();
         aisle2.setPreferredSize(new Dimension(70, 0));
 
+
+
+
         for (int i = 0; i < 10; i++) {
             seatSignPanel.add(new JLabel(Character.toString((char)('A' + i))));
         }
 
-        JButton[][] seatArray = new JButton[10][16];
+        seatArray = new JButton[10][16];
 
         for (int i = 0; i < seatArray.length; i++) {
             for (int j = 0; j < 16; j++) {
                 seatArray[i][j] = new JButton(Integer.toString(j + 1));
+                seatArray[i][j].setBackground(Color.CYAN);
+                seatArray[i][j].addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        JButton srcBut = (JButton) e.getSource();
+                        if (srcBut.getBackground()==Color.RED)
+                        {
+                            srcBut.setBackground(Color.CYAN);
+                        }
+                        else if(srcBut.getBackground()==Color.CYAN)
+                        {
+                            srcBut.setBackground(Color.RED);
+                        }
+
+                    }
+                });
                 if (j < 2) {
                     if (j == 0) {
                         seatPanel1.add(new JLabel(Character.toString((char)('A' + i))));
@@ -113,22 +145,18 @@ public class Seat extends JFrame implements Manageable {
         allSeatPanel.add(aisle2);
         allSeatPanel.add(seatPanel5);
         allSeatPanel.add(seatPanel6);
-
+//        allSeatPanel.add(radioPanel);
         add(allSeatPanel);
 
         super.pack();
-
-//        button1.addActionListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                //new movieReservation();
-//            }
-//        });
 
         setVisible(true);
     }
 
     public static void main(String args[]) {
-        new Seat();
+        Seat mSeat = new Seat();
+        mSeat.readCurrentSeat();
+        mSeat.changeReserved();
     }
 
     @Override
@@ -145,4 +173,42 @@ public class Seat extends JFrame implements Manageable {
     public boolean matches(String kwd) {
         return false;
     }
+
+    public void readCurrentSeat() {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                    new FileReader("seats.txt")
+            );
+
+        String str;
+        int count=0;
+        while ((str = reader.readLine()) != null) {
+            curSeat[count] = str;
+            count++;
+            System.out.println(str);
+        }
+
+        reader.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    public void changeReserved()
+    {
+        for (int i=0;i<10;i++)
+        {
+            for (int j = 0; j < 16; j++) {
+                if (this.curSeat[i].charAt(j)=='1')
+                {
+                    seatArray[i][j].setBackground(Color.BLACK);
+                    System.out.println(i+"  "+j);
+                }
+            }
+        }
+    }
+
 }
