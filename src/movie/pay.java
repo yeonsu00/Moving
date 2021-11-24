@@ -21,6 +21,8 @@ public class pay extends JFrame {
         top=new JPanel( new GridLayout(4,2));
         mid=new JPanel(new GridLayout(2,3));
         bot=new JPanel(new GridLayout(1,1));
+
+
         JRadioButton [] pay = new JRadioButton [4]; // 버튼 배열
         //패널 색 변경
         top.setBackground(Color.WHITE);
@@ -68,11 +70,11 @@ public class pay extends JFrame {
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image admit = admitImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
-        Image admit2 = admit.getScaledInstance(800, 28, Image.SCALE_DEFAULT);
+        Image admit2 = admit.getScaledInstance(800, 40, Image.SCALE_SMOOTH);
         //새로 조절된 사이즈의 이미지(im2)를 가지는 ImageIcon 객체를 다시 생성
         ImageIcon admitImage2 = new ImageIcon(admit2);
-        //선택버튼 추가
-        JButton bt = new JButton(admitImage2);
+
+
 
         //top 패널 예매결과 출력
         num=new JLabel("총 인원");
@@ -89,7 +91,7 @@ public class pay extends JFrame {
         //result.setHorizontalAlignment(JLabel.CENTER);
         top.add(result);
         top.add(new JLabel("7000원"));
-        top.setBorder(new TitledBorder("예매확인"));
+        top.setBorder(new TitledBorder("예매확인"));//경계선 추가
 
         //mid 패널 결제종류선택
 
@@ -105,8 +107,13 @@ public class pay extends JFrame {
         jb.add(pay[2]);
         jb.add(pay[3]);
 
-        mid.setBorder(new TitledBorder("결제방법"));//테두리 꾸미기
+        //mid.setBorder(new TitledBorder("결제방법"));//테두리 꾸미기
         //최하단 패널
+
+        //선택버튼 추가
+        JButton bt = new JButton(admitImage2);
+        bt.setBorderPainted(false);//버튼 경계선 안보이게
+        bt.setContentAreaFilled(false);//버튼 내용채우기 안 함
         bot.add(bt);
 
 
@@ -116,6 +123,7 @@ public class pay extends JFrame {
         add(bot,BorderLayout.SOUTH);
 
         setSize(800,1000);
+        setLocationRelativeTo(null);
         setVisible(true);
 
         //버튼 리스너

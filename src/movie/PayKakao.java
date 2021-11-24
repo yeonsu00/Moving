@@ -14,7 +14,7 @@ class PayKakao extends JFrame implements ActionListener {
 
     PayKakao() {
         setTitle("Kakao pay");
-        setSize(300,300);
+        setSize(400,400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();
@@ -23,7 +23,7 @@ class PayKakao extends JFrame implements ActionListener {
         lblname = new JLabel("NAME");
         lblpassword = new JLabel("Password(6자리)");
 
-        txtname = new JTextField(10);
+        txtname = new JTextField(20);
         txtpassword = new JTextField(6);
 
         b1 = new JButton("결제");
@@ -46,7 +46,7 @@ class PayKakao extends JFrame implements ActionListener {
                 setVisible(false);
             }
         });
-
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

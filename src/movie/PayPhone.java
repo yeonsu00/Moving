@@ -14,7 +14,7 @@ class PayPhone extends JFrame implements ActionListener {
 
     PayPhone() {
         setTitle("Pay phone");
-        setSize(300,300);
+        setSize(400,400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();
@@ -25,7 +25,7 @@ class PayPhone extends JFrame implements ActionListener {
         lblwords = new JLabel("Word(4자리)");
 
 
-        txtname = new JTextField(10);
+        txtname = new JTextField(20);
         txtnumber = new JTextField(12);
         txtwords = new JTextField(4);
 
@@ -51,7 +51,7 @@ class PayPhone extends JFrame implements ActionListener {
                 setVisible(false);
             }
         });
-
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

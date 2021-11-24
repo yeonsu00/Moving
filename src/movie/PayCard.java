@@ -30,12 +30,11 @@ class PayCard extends JFrame implements ActionListener {
         panel.setLayout(new GridLayout(0, 2));
 
 
-
         lblname = new JLabel("NAME");
         lblcard = new JLabel("Card NUMBER");
 
 
-        txtname = new JTextField(10);
+        txtname = new JTextField(20);
         txtcard = new JTextField(20);
 
         b1 = new JButton("결제");
@@ -61,7 +60,8 @@ class PayCard extends JFrame implements ActionListener {
                 setVisible(false);
             }
         });
-        setSize(300,300);
+        setSize(400,400);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
