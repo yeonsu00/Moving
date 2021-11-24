@@ -21,8 +21,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import manage.Factory;
-import manage.Manager;
+import mgr.Factory;
+import mgr.Manager;
 
 public class Foods {
     int count = 0;

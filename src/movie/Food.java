@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import manage.Factory;
-import manage.Manageable;
+import mgr.Factory;
+import mgr.Manageable;
 
 public class Food implements Manageable {
     Scanner scan=new Scanner(System.in);
