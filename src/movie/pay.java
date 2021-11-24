@@ -28,7 +28,7 @@ public class pay extends JFrame {
         bot.setBackground(Color.WHITE);
         //결제도구 이미지 처리
         //card 이미지 처리
-        ImageIcon cardImage = new ImageIcon("C:\\Users\\kim10\\IdeaProjects\\Moving\\src\\movie\\images\\cardButton.png");
+        ImageIcon cardImage = new ImageIcon("image/cardButton.png");
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image card = cardImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
@@ -37,7 +37,7 @@ public class pay extends JFrame {
         ImageIcon cardImage2 = new ImageIcon(card2);
 
         //phone 이미지 처리
-        ImageIcon phoneImage = new ImageIcon("C:\\Users\\kim10\\IdeaProjects\\Moving\\src\\movie\\images\\phone.png");
+        ImageIcon phoneImage = new ImageIcon("image/phone.png");
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image phone = phoneImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
@@ -46,7 +46,7 @@ public class pay extends JFrame {
         ImageIcon phoneImage2 = new ImageIcon(phone2);
 
         //kakaopay 이미지 처리
-        ImageIcon kakaoImage = new ImageIcon("C:\\Users\\kim10\\IdeaProjects\\Moving\\src\\movie\\images\\kakao.png");
+        ImageIcon kakaoImage = new ImageIcon("image/kakao.png");
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image kakao = kakaoImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
@@ -55,7 +55,7 @@ public class pay extends JFrame {
         ImageIcon kakaoImage2 = new ImageIcon(kakao2);
 
         //payco 이미지 처리
-        ImageIcon paycoImage = new ImageIcon("C:\\Users\\kim10\\IdeaProjects\\Moving\\src\\movie\\images\\payco.png");
+        ImageIcon paycoImage = new ImageIcon("image/payco.png");
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image payco = paycoImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
@@ -64,11 +64,11 @@ public class pay extends JFrame {
         ImageIcon paycoImage2 = new ImageIcon(payco2);
 
         //결제 이미지 처리
-        ImageIcon admitImage = new ImageIcon("C:\\Users\\kim10\\IdeaProjects\\Moving\\src\\movie\\images\\admitButton.png");
+        ImageIcon admitImage = new ImageIcon("image/admitButton.png");
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image admit = admitImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
-        Image admit2 = admit.getScaledInstance(800, 32, Image.SCALE_DEFAULT);
+        Image admit2 = admit.getScaledInstance(800, 28, Image.SCALE_DEFAULT);
         //새로 조절된 사이즈의 이미지(im2)를 가지는 ImageIcon 객체를 다시 생성
         ImageIcon admitImage2 = new ImageIcon(admit2);
         //선택버튼 추가
