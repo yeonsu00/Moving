@@ -156,7 +156,6 @@ public class Seat extends JFrame implements Manageable{
     public static void main(String args[]) {
         Seat mSeat = new Seat();
         mSeat.readCurrentSeat();
-        mSeat.changeReserved();
     }
 
     @Override
@@ -194,7 +193,7 @@ public class Seat extends JFrame implements Manageable{
         catch (IOException e) {
             e.printStackTrace();
         }
-
+        changeReserved();
 
     }
     public void changeReserved()
