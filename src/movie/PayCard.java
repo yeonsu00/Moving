@@ -92,8 +92,8 @@ class PayCard extends JFrame implements ActionListener {
                     bw.write(txtname.getText() + "/");
                     bw.write(txtcard.getText() + "\n");
                     bw.close();
-
-                    JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.");
+                    new payFin();
+                   // JOptionPane.showMessageDialog(null, "결제가 완료되었습니다.");
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "결제에 실패하였습니다.");

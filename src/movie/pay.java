@@ -152,9 +152,10 @@ public class pay extends JFrame {
         bt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(pay[0].isSelected()) {
-                    //new PayCard();
-                    new Paycard_ex2();
+                    //new PayCard(); //카드정보입력
+                    new Paycard_ex2(); //결제 이미지 창
                     setVisible(false);
+
                 }
                 if(pay[1].isSelected()) {
                     new PayPhone();

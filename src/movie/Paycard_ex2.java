@@ -65,9 +65,24 @@ public class Paycard_ex2 extends JFrame {
            }
       });
 
-      //panel.setBounds(0,0,700,350);
+      panel.setBounds(0,0,700,350);
       panel2.setBounds(0,320,700,40);
       panel2.add(b1);panel2.add(b2);panel2.add(b3);  add(panel2);*/
+
+        b1 = new JButton("확인");
+        b1.setBorderPainted(false);
+        panel.setLayout(null);
+        b1.setBounds(290,300,80,50);
+
+        panel.add(b1);
+
+
+        b1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new payFin();
+                setVisible(false);
+            }
+        });
       setTitle("카드 결제");
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setSize(700,400);
@@ -77,9 +92,5 @@ public class Paycard_ex2 extends JFrame {
     }
 
 
-    public static void main(String[] args){
-        new Paycard_ex2();
-
-    }
 
 }
