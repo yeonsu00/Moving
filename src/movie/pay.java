@@ -16,7 +16,7 @@ public class pay extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel num,money,resulttxt;
         JPanel top,mid,bot;
-
+        int ticket=12000;
 
 
 
@@ -94,14 +94,14 @@ public class pay extends JFrame {
         top.add(money);
         String from=array[0];
         int result=Integer.parseInt(array[0]);
-        top.add(new JLabel(result*12000+"원"));
+        top.add(new JLabel(result*ticket+"원"));
         //money.setHorizontalAlignment(JLabel.CENTER);
 
 
         resulttxt=new JLabel("결제 필요금액");
         //result.setHorizontalAlignment(JLabel.CENTER);
         top.add(resulttxt);
-        top.add(new JLabel(result*12000+"원"));
+        top.add(new JLabel(result*ticket+"원"));
 
         top.setBorder(new TitledBorder("예매확인"));//경계선 추가
 
