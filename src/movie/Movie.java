@@ -6,12 +6,21 @@ import mgr.Manageable;
 
 public class Movie implements Manageable {
     //A1001 장르만로맨스 15 113 14000
-    String movieCode;
-    String movieName;
-    String ageLimit;
-    int time;
-    int price;
+    public String movieCode;
+    public String movieName;
+    public String ageLimit;
+    public int time;
+    public int price;
     ArrayList<MovieSchedule> scheduleList = new ArrayList();
+
+    public Movie(String name) {
+        // TODO Auto-generated constructor stub
+        this.movieName=name;
+    }
+
+    public Movie() {
+        // TODO Auto-generated constructor stub
+    }
 
     @Override
     public void read(Scanner scan) {
@@ -23,14 +32,30 @@ public class Movie implements Manageable {
         price=scan.nextInt();
     }
 
+    public void readInsert(Scanner scan)
+    {
+        System.out.println("새로운 영화 코드를 입력해주세요:");
+        movieCode = scan.next();
+
+        System.out.println("연령제한을 입력해주세요:");
+        this.ageLimit = scan.next();
+
+        System.out.println("새로운 영화 러닝타임을 입력해주세요:");
+        this.time = scan.nextInt();
+
+        System.out.println("새로운 영화 가격을 입력해주세요:");
+        this.price = scan.nextInt();
+        System.out.println("저장이 완료되었습니다.");
+    }
+
     @Override
     public void print() {
         System.out.printf("[%s] %s\t%s세\t상영시간:%d분\t가격:%d원",movieCode,movieName,ageLimit,time,price);
         System.out.println();
-        System.out.printf("[%s 상영스케줄]\n", movieName);
-        for(MovieSchedule m: scheduleList){
-            m.print();
-        }
+    }
+
+    public void prints(int i) {
+        System.out.printf("[%s] %s\t%s세\t상영시간:%d분\t가격:%d원",movieCode,movieName,ageLimit,time,price);
         System.out.println();
     }
 
@@ -39,7 +64,7 @@ public class Movie implements Manageable {
         // TODO Auto-generated method stub
         if (kwd.length() > 2 && movieCode.equals(kwd))
             return true;
-        if(movieName.contains("kwd"))
+        if(movieName.equals("kwd"))
             return true;
         if(ageLimit.equals("kwd"))
             return true;
@@ -48,7 +73,7 @@ public class Movie implements Manageable {
         return false;
     }
 
-    void addMovieSchedule(MovieSchedule movieSchedule) {
+    void addMovieSchedule(MovieSchedule movieSchedule){
         scheduleList.add(movieSchedule);
     }
 }
