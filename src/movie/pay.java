@@ -152,7 +152,8 @@ public class pay extends JFrame {
         bt.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 if(pay[0].isSelected()) {
-                    new PayCard();
+                    //new PayCard();
+                    new Paycard_ex2();
                     setVisible(false);
                 }
                 if(pay[1].isSelected()) {
