@@ -14,13 +14,13 @@ public class pay extends JFrame {
     public pay() throws IOException {
         setTitle("예매확인");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel num,money,resulttxt;
+        JLabel num,money,resulttxt,people,wholeMoney,totalMoney;
         JPanel top,mid,bot;
         int ticket=12000;
 
 
 
-        top=new JPanel( new GridLayout(4,2));
+        top=new JPanel( new GridLayout(2,3));
         mid=new JPanel(new GridLayout(2,3));
         bot=new JPanel(new GridLayout(1,1));
 
@@ -81,28 +81,38 @@ public class pay extends JFrame {
 
         //top 패널 예매결과 출력
         num=new JLabel("총 인원");
-        //num.setHorizontalAlignment(JLabel.CENTER);
+        num.setHorizontalAlignment(JLabel.CENTER);
         top.add(num);
+
+        money=new JLabel("총 결제금액");
+        money.setHorizontalAlignment(JLabel.CENTER);
+        top.add(money);
+
+        resulttxt=new JLabel("결제 필요금액");
+        resulttxt.setHorizontalAlignment(JLabel.CENTER);
+        top.add(resulttxt);
+
         //파일 입출력을 통한 결과출력
         String s = null;
         BufferedReader br = new BufferedReader(new FileReader("reservation.txt"));
         s = br.readLine();
         String[] array = s.split("/");
-        top.add(new JLabel(array[0]+"명"));
+        people=new JLabel(array[0]+"명");
+        people.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
+        top.add(people);//사람 수
 
-        money=new JLabel("총 결제금액");
-        top.add(money);
+
         String from=array[0];
         int result=Integer.parseInt(array[0]);
-        top.add(new JLabel(result*ticket+"원"));
+        totalMoney=new JLabel(result*ticket+"원");
+        totalMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
+        top.add(totalMoney);//총 결제금액
         //money.setHorizontalAlignment(JLabel.CENTER);
 
 
-        resulttxt=new JLabel("결제 필요금액");
-        //result.setHorizontalAlignment(JLabel.CENTER);
-        top.add(resulttxt);
-        top.add(new JLabel(result*ticket+"원"));
-
+        wholeMoney=new JLabel(result*ticket+"원");
+        top.add(wholeMoney);//결제 필요금액
+        wholeMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
         top.setBorder(new TitledBorder("예매확인"));//경계선 추가
 
         //mid 패널 결제종류선택
