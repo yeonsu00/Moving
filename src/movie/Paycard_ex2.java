@@ -18,17 +18,18 @@ public class Paycard_ex2 extends JFrame {
       //이미지를 실제로 갖고 있는 Image객체 뽑아오기
       Image card = icon.getImage();
       //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
-      Image card2 = card.getScaledInstance(700, 350, Image.SCALE_DEFAULT);
+      Image card2 = card.getScaledInstance(700, 400, Image.SCALE_DEFAULT);
       //새로 조절된 사이즈의 이미지(im2)를 가지는 ImageIcon 객체를 다시 생성
       ImageIcon cardImage2 = new ImageIcon(card2);
 
+      /*뒤로가기 이미지
       //이미지를 실제로 갖고 있는 Image객체 뽑아오기
       Image back = imgBack.getImage();
       //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
       Image back2 = back.getScaledInstance(30, 20, Image.SCALE_DEFAULT);
       //새로 조절된 사이즈의 이미지(im2)를 가지는 ImageIcon 객체를 다시 생성
       ImageIcon Back2 = new ImageIcon(back2);
-
+      */
 
         JPanel panel=new JPanel(){
           public void paintComponent(Graphics g){
@@ -40,6 +41,7 @@ public class Paycard_ex2 extends JFrame {
       };
       scrollPane=new JScrollPane(panel);
       setContentPane(scrollPane);
+      /*버튼 추가
       panel2=new JPanel( new GridLayout(0,3));
       b1 = new JButton("직접입력");
       b2=  new JButton("결제");
@@ -65,7 +67,8 @@ public class Paycard_ex2 extends JFrame {
 
       //panel.setBounds(0,0,700,350);
       panel2.setBounds(0,320,700,40);
-      panel2.add(b1);panel2.add(b2);panel2.add(b3);  add(panel2);
+      panel2.add(b1);panel2.add(b2);panel2.add(b3);  add(panel2);*/
+      setTitle("카드 결제");
       setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       setSize(700,400);
       setVisible(true);
