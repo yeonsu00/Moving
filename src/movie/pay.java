@@ -6,15 +6,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.border.TitledBorder;
-
+import java.io.*;
+import java.util.*;
 public class pay extends JFrame {
 
 
-    public pay() {
+    public pay() throws IOException {
         setTitle("예매확인");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel num,money,result;
+        JLabel num,money,resulttxt;
         JPanel top,mid,bot;
+
 
 
 
@@ -28,6 +30,7 @@ public class pay extends JFrame {
         top.setBackground(Color.WHITE);
         mid.setBackground(Color.WHITE);
         bot.setBackground(Color.WHITE);
+
         //결제도구 이미지 처리
         //card 이미지 처리
         ImageIcon cardImage = new ImageIcon("image/cardButton.png");
@@ -80,17 +83,26 @@ public class pay extends JFrame {
         num=new JLabel("총 인원");
         //num.setHorizontalAlignment(JLabel.CENTER);
         top.add(num);
-        top.add(new JLabel("1명"));
+        //파일 입출력을 통한 결과출력
+        String s = null;
+        BufferedReader br = new BufferedReader(new FileReader("reservation.txt"));
+        s = br.readLine();
+        String[] array = s.split("/");
+        top.add(new JLabel(array[0]+"명"));
 
         money=new JLabel("총 결제금액");
-        //money.setHorizontalAlignment(JLabel.CENTER);
         top.add(money);
-        top.add(new JLabel("7000원"));
+        String from=array[0];
+        int result=Integer.parseInt(array[0]);
+        top.add(new JLabel(result*12000+"원"));
+        //money.setHorizontalAlignment(JLabel.CENTER);
 
-        result=new JLabel("결제 필요금액");
+
+        resulttxt=new JLabel("결제 필요금액");
         //result.setHorizontalAlignment(JLabel.CENTER);
-        top.add(result);
-        top.add(new JLabel("7000원"));
+        top.add(resulttxt);
+        top.add(new JLabel(result*12000+"원"));
+
         top.setBorder(new TitledBorder("예매확인"));//경계선 추가
 
         //mid 패널 결제종류선택
@@ -150,7 +162,7 @@ public class pay extends JFrame {
 
 
     }
-    public static void main(String [] args) {
+    public static void main(String [] args) throws IOException {
         new pay();
     }
 

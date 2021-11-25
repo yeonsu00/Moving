@@ -54,7 +54,11 @@ public class Seat extends JFrame implements Manageable{
         goForward.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new movie.pay();
+                try {
+                    new pay();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         goBack.setPreferredSize(new Dimension(60, 30));

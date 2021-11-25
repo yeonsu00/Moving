@@ -47,7 +47,11 @@ class PayPhone extends JFrame implements ActionListener {
         b1.addActionListener(this);
         b2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new pay();
+                try {
+                    new pay();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 setVisible(false);
             }
         });
