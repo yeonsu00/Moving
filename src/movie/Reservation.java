@@ -25,12 +25,12 @@ public class Reservation extends section{
             int x = s.nextInt();
             int y = s.nextInt();
             resSeat(x, y);
-            if (Seat[x - 1][y - 1].equals("O")) {
-                Seat[x - 1][y - 1] = "X";
+            if (seat[x - 1][y - 1].equals("O")) {
+                seat[x - 1][y - 1] = "X";
                 System.out.println("예약이 완료되었습니다.");
                 break;
             }
-            if (Seat[x - 1][y - 1].contentEquals("X"))
+            if (seat[x - 1][y - 1].contentEquals("X"))
                 System.out.println("이미 예약된 좌석입니다.");
         }
     }

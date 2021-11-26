@@ -3,7 +3,7 @@ package admin;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import hw2.Contact;
+//import hw2.Contact;
 import movie.Movie;
 import movie.MovieSchedule;
 
