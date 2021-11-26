@@ -2,10 +2,40 @@ package movie;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class movieReservation2 extends JFrame {
 
     ImageIcon changeIcon;
+    String[] time = new String[100];
+
+    public void readSchedule() {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                    new FileReader("movieSchedule.txt")
+            );
+            String str;
+            int count=0;
+            while ((str = reader.readLine()) != null) {
+//                if(str.contentEquals("A1001")) {
+//                    time[count] = str;
+//                    count++;
+//                    System.out.print(str);
+//                }
+                time[count] = str;
+                System.out.print(str);
+                System.out.println();
+            }
+            reader.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void setFrame() {
         setTitle("MovieChoose");
@@ -30,6 +60,18 @@ public class movieReservation2 extends JFrame {
         jpanel.add(title);
         return jpanel;
     }
+
+//    JPanel centerPanel() {
+//
+//        MovieSchedule movieSchedule =
+//        JPanel jpanel = new JPanel();
+//        JLabel la = new JLabel();
+//        la.setText();
+//
+//        jpanel.add(la);
+//        return jpanel;
+//    }
+
     protected JButton setBtnMovie(String name, String time, String seatCnt, int x, int y) {
         JButton btn = new JButton("<html>" + time + "<br/>" + seatCnt + "</html>");
 
@@ -46,9 +88,10 @@ public class movieReservation2 extends JFrame {
 
     public static void main(String[] args) {
         movieReservation2 mFrame2 = new movieReservation2();
-        mFrame2.movieReservation2();
+        mFrame2.readSchedule();
+        //mFrame2.setFrame();
     }
-    private void movieReservation2() {
+    private void movieReservation2(String movie) {
         // TODO Auto-generated method stub
     }
 }
