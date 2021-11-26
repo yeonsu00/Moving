@@ -7,6 +7,9 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -21,7 +24,7 @@ public class movieReservation1 extends JFrame {
 //
 //    JScrollPane scrollbar = new JScrollPane();
 //    scrollbar.getViewport().setView();
-
+    String[] time = new String[100];
     ImageIcon changeIcon1;
     ImageIcon changeIcon2;
     ImageIcon changeIcon3;
@@ -79,17 +82,36 @@ public class movieReservation1 extends JFrame {
         jpanel.add(title);
         return jpanel;
     }
+    public void readMovie() {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                    new FileReader("movie.txt")
+            );
+            String str;
+            int count=0;
+            while ((str = reader.readLine()) != null) {
+//                if(str.contentEquals("A1001")) {
+//                    time[count] = str;
+//                    count++;
+//                    System.out.print(str);
+//                }
+                time[count] = str;
+                System.out.print(str);
+                System.out.println();
+            }
+            reader.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        //return str;
+    }
     void bringImage() {
         ImageIcon image1 = new ImageIcon("image/image1.png");
-        //JButton jbutton1 = new JButton(new ImageIcon("image/image1.png"));
         Image im1 = image1.getImage();
-        Image changeImg1 = im1.getScaledInstance(270, 315, Image.SCALE_SMOOTH);
-        //changeIcon1 = new ImageIcon(changeImg1);
+        Image changeImg1 = im1.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon1 = new ImageIcon(changeImg1);
-        //ButtonImage = new
-        JButton button1 = new JButton("");
-        button1.setIcon(new ImageIcon("image/image1.png"));
-        add(button1);
 
         ImageIcon image2 = new ImageIcon("image/image2.png");
         Image im2 = image2.getImage();
@@ -177,7 +199,110 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                //new Kiosk2(); 여기에 키오스크 말고 영화 시간 고르는 창으로 ㄱ
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la10.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
+            }
+        });
+        la11.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                JOptionPane.showMessageDialog(null, "");
+                dispose();
+                new movieReservation2().setFrame();
+                dispose();
             }
         });
 

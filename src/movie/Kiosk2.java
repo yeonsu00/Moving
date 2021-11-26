@@ -26,7 +26,7 @@ public class Kiosk2 extends JFrame {
 
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new movieReservation2().setFrame();
+                new movieReservation1().setFrame();
                 dispose();
             }
         });

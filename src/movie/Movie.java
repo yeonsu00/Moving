@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import mgr.Manageable;
 
+import javax.swing.*;
+
 public class Movie implements Manageable {
     //A1001 장르만로맨스 15 113 14000
     public String movieCode;
@@ -12,6 +14,8 @@ public class Movie implements Manageable {
     public int time;
     public int price;
     ArrayList<MovieSchedule> scheduleList = new ArrayList();
+    private JTable table1;
+    private JSpinner spinner1;
 
     public Movie(String name) {
         // TODO Auto-generated constructor stub        this.movieName=name;
