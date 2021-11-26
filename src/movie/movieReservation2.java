@@ -10,33 +10,10 @@ public class movieReservation2 extends JFrame {
 
     ImageIcon changeIcon;
     String[] time = new String[100];
+    Movie movie;
 
-    public void readSchedule() {
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(
-                    new FileReader("movieSchedule.txt")
-            );
-            String str;
-            int count=0;
-            while ((str = reader.readLine()) != null) {
-//                if(str.contentEquals("A1001")) {
-//                    time[count] = str;
-//                    count++;
-//                    System.out.print(str);
-//                }
-                time[count] = str;
-                System.out.print(str);
-                if(str.contentEquals("A1001")) {
-
-                }
-                System.out.println();
-            }
-            reader.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void readMovie(String movieCode) {
+        movie = Kiosk.findMovie(movieCode);
     }
 
 
@@ -89,7 +66,20 @@ public class movieReservation2 extends JFrame {
     JPanel centerPanel() {
         JPanel jpanel = new JPanel();
         jpanel.setBackground(Color.WHITE);
-
+//        for(MovieSchedule m: movie.scheduleList){
+//            String title = m.movieStartHour + ":" + m.movieStartMinute;
+//            JLabel la = new JLabel(title);
+//            jpanel.add(la);
+//        }
+        for(MovieSchedule m: movie.scheduleList){
+            String title = m.movieStartHour + ":" + m.movieStartMinute;
+            JLabel la = new JLabel(title);
+            JPanel jp = new JPanel();
+           // jp.setSize(100,100);
+            jp.setBackground(Color.gray);
+            jp.add(la);
+            jpanel.add(jp);
+        }
         return jpanel;
     }
 
@@ -99,6 +89,7 @@ public class movieReservation2 extends JFrame {
 
         return jpanel;
     }
+
 
 //    protected JButton setBtnMovie(String name, String time, String seatCnt, int x, int y) {
 //        JButton btn = new JButton("<html>" + time + "<br/>" + seatCnt + "</html>");
@@ -114,12 +105,14 @@ public class movieReservation2 extends JFrame {
 //        return btn;
 //    }
 
-    public static void main(String[] args) {
-        movieReservation2 mFrame2 = new movieReservation2();
-        mFrame2.readSchedule();
-        mFrame2.setFrame();
-    }
-    private void movieReservation2(String movie) {
+//    public static void main(String[] args) {
+//        movieReservation2 mFrame2 = new movieReservation2();
+//        mFrame2.readSchedule();
+//        mFrame2.setFrame();
+//    }
+
+    movieReservation2(String movieCode) {
         // TODO Auto-generated method stub
+        readMovie(movieCode);
     }
 }

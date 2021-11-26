@@ -201,7 +201,7 @@ public class movieReservation1 extends JFrame {
                 // TODO Auto-generated method stub
                 message("A1001");
                 String code = readMovie();
-                new movieReservation2().setFrame();
+                new movieReservation2("A1001").setFrame();
                 dispose();
             }
         });
@@ -210,7 +210,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1002");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1002").setFrame();
                 dispose();
             }
         });
@@ -219,7 +219,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1003");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1003").setFrame();
                 dispose();
             }
         });
@@ -228,7 +228,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1004");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1004").setFrame();
                 dispose();
             }
         });
@@ -237,7 +237,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1005");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1005").setFrame();
                 dispose();
             }
         });
@@ -246,7 +246,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1006");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1006").setFrame();
                 dispose();
             }
         });
@@ -255,7 +255,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1007");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1007").setFrame();
                 dispose();
             }
         });
@@ -264,7 +264,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1008");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1008").setFrame();
                 dispose();
             }
         });
@@ -273,7 +273,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1009");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1009").setFrame();
                 dispose();
             }
         });
@@ -282,7 +282,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1010");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1010").setFrame();
                 dispose();
             }
         });
@@ -291,7 +291,7 @@ public class movieReservation1 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
                 message("A1011");
-                new movieReservation2().setFrame();
+                new movieReservation2("A1011").setFrame();
                 dispose();
             }
         });

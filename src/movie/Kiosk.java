@@ -32,6 +32,7 @@ public class Kiosk {
                 return new MovieSchedule();
             }
         });
+        new Kiosk2();
 //        hallMgr.readAll("ScreeningHall.txt", new Factory<ScreeningHall>() {
 //			public ScreeningHall create() {
 //				return new ScreeningHall();
@@ -42,7 +43,7 @@ public class Kiosk {
 //				return new Order();
 //			}
 //		});
-        menu();
+        //menu();
     }
 
     void menu() {

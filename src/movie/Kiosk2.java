@@ -1,5 +1,8 @@
 package movie;
 
+import mgr.Factory;
+import mgr.Manager;
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
