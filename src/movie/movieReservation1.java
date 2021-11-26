@@ -187,8 +187,8 @@ public class movieReservation1 extends JFrame {
 
 
     public static void main(String[] args) {
-        movieReservation1 mFrame = new movieReservation1();
-        mFrame.movieReservation();
+        movieReservation1 mFrame1 = new movieReservation1();
+        mFrame1.movieReservation();
     }
     private void movieReservation() {
         // TODO Auto-generated method stub
