@@ -5,18 +5,22 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Scrollbar;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
-public class movieReservation extends JFrame {
+public class movieReservation1 extends JFrame {
+
+//    JTextArea area= new JTextArea();
+//    JScrollPane scrollPane = new JScrollPane(area);  //스크롤판 추가
+//    JPane.add(scrollPane); //화면에 추가
+//
+//    area.append(log);  // 출력로그 JTextArea 출력
+//    area.setCaretPosition(txtLog.getDocument().getLength());  // 이 코드를 append 밑에 추가해주면 항상 아래로 스크롤 된다
+//
+//    JScrollPane scrollbar = new JScrollPane();
+//    scrollbar.getViewport().setView();
 
     ImageIcon changeIcon1;
     ImageIcon changeIcon2;
@@ -59,7 +63,7 @@ public class movieReservation extends JFrame {
         c.add(northPanel(), BorderLayout.NORTH);
         c.add(centerPanel(), BorderLayout.CENTER);
 
-        setSize(500, 500);
+        setSize(1500, 800);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -79,7 +83,7 @@ public class movieReservation extends JFrame {
         ImageIcon image1 = new ImageIcon("image/image1.png");
         //JButton jbutton1 = new JButton(new ImageIcon("image/image1.png"));
         Image im1 = image1.getImage();
-        Image changeImg1 = im1.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
+        Image changeImg1 = im1.getScaledInstance(270, 315, Image.SCALE_SMOOTH);
         //changeIcon1 = new ImageIcon(changeImg1);
         changeIcon1 = new ImageIcon(changeImg1);
         //ButtonImage = new
@@ -183,7 +187,7 @@ public class movieReservation extends JFrame {
 
 
     public static void main(String[] args) {
-        movieReservation mFrame = new movieReservation();
+        movieReservation1 mFrame = new movieReservation1();
         mFrame.movieReservation();
     }
     private void movieReservation() {

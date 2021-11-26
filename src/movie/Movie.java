@@ -14,8 +14,7 @@ public class Movie implements Manageable {
     ArrayList<MovieSchedule> scheduleList = new ArrayList();
 
     public Movie(String name) {
-        // TODO Auto-generated constructor stub
-        this.movieName=name;
+        // TODO Auto-generated constructor stub        this.movieName=name;
     }
 
     public Movie() {
