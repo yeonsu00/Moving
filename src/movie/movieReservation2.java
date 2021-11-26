@@ -81,46 +81,25 @@ public class movieReservation2 extends JFrame {
 
     JPanel westPanel() {
         JPanel jpanel = new JPanel();
-        jpanel.setBackground(Color.WHITE);
+        jpanel.setBackground(Color.LIGHT_GRAY);
 
         return jpanel;
     }
 
     JPanel centerPanel() {
         JPanel jpanel = new JPanel();
-        jpanel.setBackground(Color.YELLOW);
+        jpanel.setBackground(Color.WHITE);
 
         return jpanel;
     }
 
     JPanel eastPanel() {
         JPanel jpanel = new JPanel();
-        jpanel.setBackground(Color.WHITE);
+        jpanel.setBackground(Color.LIGHT_GRAY);
 
         return jpanel;
     }
 
-    public void readCurrentSeat() {
-        BufferedReader reader = null;
-        try {
-            reader = new BufferedReader(
-                    new FileReader("movieSchedule.txt")
-            );
-
-            String str;
-            int count=0;
-//            while ((str = reader.readLine()) != null) {
-//                curSeat[count] = str;
-//                count++;
-//                System.out.println(str);
-//            }
-
-            reader.close();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 //    protected JButton setBtnMovie(String name, String time, String seatCnt, int x, int y) {
 //        JButton btn = new JButton("<html>" + time + "<br/>" + seatCnt + "</html>");
 //

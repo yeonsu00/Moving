@@ -82,7 +82,7 @@ public class movieReservation1 extends JFrame {
         jpanel.add(title);
         return jpanel;
     }
-    public void readMovie() {
+    public String readMovie() {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(
@@ -105,7 +105,7 @@ public class movieReservation1 extends JFrame {
         catch (IOException e) {
             e.printStackTrace();
         }
-        //return str;
+        return "";
     }
     void bringImage() {
         ImageIcon image1 = new ImageIcon("image/image1.png");
@@ -199,8 +199,8 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1001");
+                String code = readMovie();
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -209,8 +209,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1002");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -219,8 +218,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1003");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -229,8 +227,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1004");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -239,8 +236,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1005");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -249,8 +245,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1006");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -259,8 +254,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1007");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -269,8 +263,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1008");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -279,8 +272,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1009");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -289,8 +281,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1010");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -299,8 +290,7 @@ public class movieReservation1 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                JOptionPane.showMessageDialog(null, "");
-                dispose();
+                message("A1011");
                 new movieReservation2().setFrame();
                 dispose();
             }
@@ -309,7 +299,12 @@ public class movieReservation1 extends JFrame {
         return jpanel;
 
     }
-
+    public void message(String code) {
+        readMovie();
+        String age = "";
+        JOptionPane.showMessageDialog(null, "이 영화는 " + age + "세 이상 관람가입니다.");
+        dispose();
+    }
 
     public static void main(String[] args) {
         movieReservation1 mFrame1 = new movieReservation1();
