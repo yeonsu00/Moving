@@ -69,17 +69,28 @@ public class Paycard_ex2 extends JFrame {
       panel2.setBounds(0,320,700,40);
       panel2.add(b1);panel2.add(b2);panel2.add(b3);  add(panel2);*/
 
-        b1 = new JButton("확인");
+        b1 = new JButton("결제확인");
         b1.setBorderPainted(false);
         panel.setLayout(null);
-        b1.setBounds(290,300,80,50);
+        b1.setBounds(300,300,100,50);
+
+        b2 = new JButton("직접입력");
+        b2.setBorderPainted(false);
+        panel.setLayout(null);
+        b2.setBounds(10,300,100,50);
 
         panel.add(b1);
-
+        panel.add(b2);
 
         b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new payFin();
+                setVisible(false);
+            }
+        });
+        b2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new PayCard();
                 setVisible(false);
             }
         });
