@@ -158,15 +158,15 @@ public class pay extends JFrame {
 
                 }
                 if(pay[1].isSelected()) {
-                    new PayPhone();
+                    new PayPhone_2();
                     setVisible(false);
                 }
                 if(pay[2].isSelected()) {
-                    new PayKakao();
+                    new PayKaKao_2();
                     setVisible(false);
                 }
                 if(pay[3].isSelected()) {
-                    new PayPayco();
+                    new PayPayco_2();
                     setVisible(false);
                 }
             }
