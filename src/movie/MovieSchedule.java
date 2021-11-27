@@ -13,6 +13,7 @@ public class MovieSchedule implements Manageable {
     public static int movieEndMinute;
     public int runningTime;	//분단위
     public int theaterNumber;	//1,20(백신패스관),30(백신패스관),40(백신패스관),50(백신패스관),6,7,8,9관
+    public Movie movie;
 
     public MovieSchedule(String Code) {
         // TODO Auto-generated constructor stub
@@ -32,6 +33,9 @@ public class MovieSchedule implements Manageable {
         movieStartMinute = scan.nextInt();
         runningTime = scan.nextInt();
         theaterNumber = scan.nextInt();
+
+        movie = Kiosk.findMovie(movieCode);
+        movie.addMovieSchedule(this);
     }
 
     @Override

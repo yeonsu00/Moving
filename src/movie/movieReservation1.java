@@ -5,19 +5,26 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.Scrollbar;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
-public class movieReservation extends JFrame {
+public class movieReservation1 extends JFrame {
 
+//    JTextArea area= new JTextArea();
+//    JScrollPane scrollPane = new JScrollPane(area);  //스크롤판 추가
+//    JPane.add(scrollPane); //화면에 추가
+//
+//    area.append(log);  // 출력로그 JTextArea 출력
+//    area.setCaretPosition(txtLog.getDocument().getLength());  // 이 코드를 append 밑에 추가해주면 항상 아래로 스크롤 된다
+//
+//    JScrollPane scrollbar = new JScrollPane();
+//    scrollbar.getViewport().setView();
+    String[] time = new String[100];
     ImageIcon changeIcon1;
     ImageIcon changeIcon2;
     ImageIcon changeIcon3;
@@ -59,7 +66,7 @@ public class movieReservation extends JFrame {
         c.add(northPanel(), BorderLayout.NORTH);
         c.add(centerPanel(), BorderLayout.CENTER);
 
-        setSize(500, 500);
+        setSize(1500, 800);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -75,17 +82,36 @@ public class movieReservation extends JFrame {
         jpanel.add(title);
         return jpanel;
     }
+    public String readMovie() {
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(
+                    new FileReader("movie.txt")
+            );
+            String str;
+            int count=0;
+            while ((str = reader.readLine()) != null) {
+//                if(str.contentEquals("A1001")) {
+//                    time[count] = str;
+//                    count++;
+//                    System.out.print(str);
+//                }
+                time[count] = str;
+                System.out.print(str);
+                System.out.println();
+            }
+            reader.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
     void bringImage() {
         ImageIcon image1 = new ImageIcon("image/image1.png");
-        //JButton jbutton1 = new JButton(new ImageIcon("image/image1.png"));
         Image im1 = image1.getImage();
         Image changeImg1 = im1.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
-        //changeIcon1 = new ImageIcon(changeImg1);
         changeIcon1 = new ImageIcon(changeImg1);
-        //ButtonImage = new
-        JButton button1 = new JButton("");
-        button1.setIcon(new ImageIcon("image/image1.png"));
-        add(button1);
 
         ImageIcon image2 = new ImageIcon("image/image2.png");
         Image im2 = image2.getImage();
@@ -173,18 +199,116 @@ public class movieReservation extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // TODO Auto-generated method stub
-                //new Kiosk2(); 여기에 키오스크 말고 영화 시간 고르는 창으로 ㄱ
+                message("A1001");
+                String code = readMovie();
+                new movieReservation2("A1001").setFrame();
+                dispose();
+            }
+        });
+        la2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1002");
+                new movieReservation2("A1002").setFrame();
+                dispose();
+            }
+        });
+        la3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1003");
+                new movieReservation2("A1003").setFrame();
+                dispose();
+            }
+        });
+        la4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1004");
+                new movieReservation2("A1004").setFrame();
+                dispose();
+            }
+        });
+        la5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1005");
+                new movieReservation2("A1005").setFrame();
+                dispose();
+            }
+        });
+        la6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1006");
+                new movieReservation2("A1006").setFrame();
+                dispose();
+            }
+        });
+        la7.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1007");
+                new movieReservation2("A1007").setFrame();
+                dispose();
+            }
+        });
+        la8.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1008");
+                new movieReservation2("A1008").setFrame();
+                dispose();
+            }
+        });
+        la9.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1009");
+                new movieReservation2("A1009").setFrame();
+                dispose();
+            }
+        });
+        la10.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1010");
+                new movieReservation2("A1010").setFrame();
+                dispose();
+            }
+        });
+        la11.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+                message("A1011");
+                new movieReservation2("A1011").setFrame();
+                dispose();
             }
         });
 
         return jpanel;
 
     }
-
+    public void message(String code) {
+        readMovie();
+        String age = "";
+        JOptionPane.showMessageDialog(null, "이 영화는 " + age + "세 이상 관람가입니다.");
+        dispose();
+    }
 
     public static void main(String[] args) {
-        movieReservation mFrame = new movieReservation();
-        mFrame.movieReservation();
+        movieReservation1 mFrame1 = new movieReservation1();
+        mFrame1.movieReservation();
     }
     private void movieReservation() {
         // TODO Auto-generated method stub

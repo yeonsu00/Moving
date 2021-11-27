@@ -1,5 +1,8 @@
 package movie;
 
+import mgr.Factory;
+import mgr.Manager;
+
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -26,7 +29,7 @@ public class Kiosk2 extends JFrame {
 
         button1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new movieReservation().setFrame();
+                new movieReservation1().setFrame();
                 dispose();
             }
         });
