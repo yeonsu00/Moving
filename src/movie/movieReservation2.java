@@ -1,6 +1,8 @@
 package movie;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,8 +15,10 @@ public class movieReservation2 extends JFrame {
     ImageIcon changeIcon;
     String[] time = new String[100];
     Movie movie;
+    String code;
 
     public void readMovie(String movieCode) {
+        code = movieCode;
         movie = Kiosk.findMovie(movieCode);
     }
 
@@ -23,14 +27,15 @@ public class movieReservation2 extends JFrame {
         setTitle("MovieChoose");
 
         Container c = getContentPane();
-        c.setLayout(new BorderLayout());
+        c.setLayout(new BorderLayout(50,50));
+        c.setBackground(Color.white);
 
         c.add(northPanel(), BorderLayout.NORTH);
-        c.add(westPanel(), BorderLayout.WEST);
+        //c.add(westPanel(), BorderLayout.WEST);
         c.add(centerPanel(), BorderLayout.CENTER);
-        c.add(eastPanel(), BorderLayout.EAST);
+        //c.add(eastPanel(), BorderLayout.EAST);
 
-        setSize(1500, 800);
+        setSize(1920, 1080);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -39,24 +44,13 @@ public class movieReservation2 extends JFrame {
 
     JPanel northPanel() {
         JPanel jpanel = new JPanel();
-        jpanel.setBackground(Color.LIGHT_GRAY);
+        jpanel.setBackground(Color.gray);
         JLabel title = new JLabel("영화상영시간표");
-        title.setFont(new Font("Vernada", Font.BOLD, 30));
+        title.setForeground(Color.WHITE);
+        title.setFont(new Font("Vernada", Font.BOLD, 40));
         jpanel.add(title);
         return jpanel;
     }
-
-//    JPanel centerPanel() {
-//
-//        MovieSchedule movieSchedule =
-//        JPanel jpanel = new JPanel();
-//        JLabel la = new JLabel();
-//        la.setText();
-//
-//        jpanel.add(la);
-//        return jpanel;
-//    }
-
 
     JPanel westPanel() {
         JPanel jpanel = new JPanel();
@@ -65,31 +59,47 @@ public class movieReservation2 extends JFrame {
         return jpanel;
     }
 
+    Icon bringImage() {
+        String sImage = code;
+        ImageIcon image = new ImageIcon("image/"+code+".png");
+        Image im = image.getImage();
+        Image changeImg = im.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+        changeIcon = new ImageIcon(changeImg);
+        return changeIcon;
+    }
+
     JPanel centerPanel() {
-        JPanel jpanel = new JPanel();
-        jpanel.setLayout(new GridLayout(10,1));
+        JPanel bigPanel = new JPanel();
+        bigPanel.setLayout(new BorderLayout(0,50));
+        bigPanel.setBackground(Color.WHITE);
 
-          JPanel jpanel1 = new JPanel();
-//        JPanel jpanel20 = new JPanel();
-//        JPanel jpanel30 = new JPanel();
-//        JPanel jpanel40 = new JPanel();
-//        JPanel jpanel50 = new JPanel();
-//        JPanel jpanel6 = new JPanel();
-//        JPanel jpanel7 = new JPanel();
-//        JPanel jpanel8 = new JPanel();
-//        JPanel jpanel9 = new JPanel();
+        //<여기는 이미지와 영화제목>
+        JPanel northPanel = new JPanel(new FlowLayout(FlowLayout.LEFT,80,0));
+        northPanel.setBackground(Color.white);
+        northPanel.setPreferredSize(new Dimension(150,150));
+        String movieName = movie.movieName;
+        JLabel northImage = new JLabel(bringImage());
+        JLabel northName = new JLabel(movieName);
+        //northName.setSize(100,100);
+        northName.setFont(new Font("Vernada", Font.BOLD, 20));
+        northPanel.add(northImage);
+        northPanel.add(northName);
 
-        jpanel.setBackground(Color.WHITE);
+        bigPanel.add(northPanel,BorderLayout.NORTH);
+
+        //<여기는 상영 시간표>
+        JPanel cneterPanel = new JPanel();
+
+        cneterPanel.setLayout(new GridLayout(7,2, 0, 15));
+        cneterPanel.setBackground(Color.WHITE);
+
         String halls[] = {"상영관1", "상영관2(백신패스관)", "상영관3(백신패스관)", "상영관4(백신패스관)", "상영관5(백신패스관)",
                 "상영관6", "상영관7","상영관8","상영관9"};
         int hallNumber[] = {1, 20, 30, 40, 50, 6, 7, 8, 9};
         for (int i = 0; i < halls.length; i++){
             int num = 0;
-            JPanel jp1 = new JPanel();
-            //jpanel.add(new JLabel(halls[i]));
-            //jpanel1.add(jp1);
-            //jpanel.add(jp1);
-            System.out.println(halls[i]);
+            JPanel oneLinePanel = null;
+
             for(MovieSchedule m: movie.scheduleList) {
                 String hour = "";
                 String min ="";
@@ -105,167 +115,47 @@ public class movieReservation2 extends JFrame {
                 else {
                     hour+=m.movieStartHour;
                 }
+
                 if (hallNumber[i] == m.theaterNumber){
                     if(num == 0){
-                        jpanel.add(new JLabel(halls[i]));
+                        oneLinePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 50, 7));
+                        oneLinePanel.setBorder(new TitledBorder(new LineBorder(Color.gray,3), ""));
+//
+                        JPanel hallNameP = new JPanel();
+                        hallNameP.setPreferredSize(new Dimension(150,50));
+                        hallNameP.add(new JLabel(halls[i]));
+                        oneLinePanel.add(hallNameP);
                         num++;
                     }
-                    JPanel jp = new JPanel();
+                    JPanel timeJp = new JPanel();
+                    timeJp.setPreferredSize(new Dimension(60,55));
+                    timeJp.setBackground(Color.LIGHT_GRAY);
+
                     String title = hour + ":" + min;
                     System.out.println(title);
                     JLabel la = new JLabel(title);
-                    jp.add(la);
-                    jp1.add(jp);
-                    jpanel.add(jp1);
+                    timeJp.add(la);
+                    oneLinePanel.add(timeJp);
+                    cneterPanel.add(oneLinePanel);
                 }
             }
-            //jpanel.add(jpanel1);
+            bigPanel.add(cneterPanel,BorderLayout.CENTER);
         }
 
-        int i1 = 0;
-        int i20 = 0;
-        int i30 = 0;
-        int i40 = 0;
-        int i50 = 0;
-        int i6 = 0;
-        int i7 = 0;
-        int i8 = 0;
-        int i9 = 0;
-
-//        for(MovieSchedule m: movie.scheduleList){
-//            if(m.theaterNumber == 1){
-//                String title = m.movieStartHour + ":" + m.movieStartMinute;
-//                JLabel la = new JLabel(title);
-//                JPanel jp = new JPanel();
-//                JPanel jp1 = new JPanel();
-//                // jp.setSize(100,100);
-//                while (i1 < 1){
-//                    jp1.add(new JLabel("1 상영관"));
-//                    i1++;
-//                }
-//                jp.setBackground(Color.gray);
-//                jp.add(la);
-//                jpanel1.add(jp1);
-//                jpanel1.add(jp);
-//            }
-//            else if(m.theaterNumber == 20) {
-//                String title = m.movieStartHour + ":" + m.movieStartMinute;
-//                JLabel la = new JLabel(title);
-//                JPanel jp = new JPanel();
-//                // jp.setSize(100,100);
-//                JPanel jp1 = new JPanel();
-//                // jp.setSize(100,100);
-//                while (i20 < 1){
-//                    jp1.add(new JLabel("1 상영관"));
-//                    i20++;
-//                }
-//                jp.setBackground(Color.gray);
-//                jp.add(la);
-//                jpanel1.add(jp1);
-//                jpanel20.add(jp);
-//            }
-//            else if(m.theaterNumber == 30) {
-//                String title = m.movieStartHour + ":" + m.movieStartMinute;
-//                JLabel la = new JLabel(title);
-//                JPanel jp = new JPanel();
-//                // jp.setSize(100,100);
-//                jp.setBackground(Color.gray);
-//                jp.add(new JLabel("3상영관(백신패스관)"));
-//                jp.add(la);
-//                jpanel30.add(jp);
-//            }
-//            else if(m.theaterNumber == 40) {
-//                String title = m.movieStartHour + ":" + m.movieStartMinute;
-//                JLabel la = new JLabel(title);
-//                JPanel jp = new JPanel();
-//                // jp.setSize(100,100);
-//                JPanel jp1 = new JPanel();
-//                // jp.setSize(100,100);
-//                while (i40 < 1){
-//                    jp1.add(new JLabel("4 상영관(백신패스관)"));
-//                    i40++;
-//                }
-//                jp.setBackground(Color.gray);
-//                jp.add(la);
-//                jpanel40.add(jp1);
-//                jpanel40.add(jp);
-//            }
-//            else if(m.theaterNumber == 50) {
-//                String title = m.movieStartHour + ":" + m.movieStartMinute;
-//                JLabel la = new JLabel(title);
-//                JPanel jp = new JPanel();
-//                // jp.setSize(100,100);
-//                jp.setBackground(Color.gray);
-//                jp.add(new JLabel("5상영관(백신패스관)"));
-//                jp.add(la);
-//                jpanel50.add(jp);
-//            }
-//            else if(m.theaterNumber == 6) {
-//                String title = m.movieStartHour + ":" + m.movieStartMinute;
-//                JLabel la = new JLabel(title);
-//                JPanel jp = new JPanel();
-//                // jp.setSize(100,100);
-//                jp.setBackground(Color.gray);
-//                jp.add(new JLabel("6상영관"));
-//                jp.add(la);
-//                jpanel6.add(jp);
-//            }
-//            else if(m.theaterNumber == 7) {
-//                String title = m.movieStartHour + ":" + m.movieStartMinute;
-//                JLabel la = new JLabel(title);
-//                JPanel jp = new JPanel();
-//                // jp.setSize(100,100);
-//                jp.setBackground(Color.gray);
-//                jp.add(new JLabel("7상영관"));
-//                jp.add(la);
-//                jpanel7.add(jp);
-//            }
-//            else if(m.theaterNumber == 8) {
-//                String title = m.movieStartHour + ":" + m.movieStartMinute;
-//                JLabel la = new JLabel(title);
-//                JPanel jp = new JPanel();
-//                // jp.setSize(100,100);
-//                jp.setBackground(Color.gray);
-//                jp.add(new JLabel("8상영관"));
-//                jp.add(la);
-//                jpanel8.add(jp);
-//            }
-//            else if(m.theaterNumber == 9) {
-//                String title = m.movieStartHour + ":" + m.movieStartMinute;
-//                JLabel la = new JLabel(title);
-//                JPanel jp = new JPanel();
-//                // jp.setSize(100,100);
-//                jp.setBackground(Color.gray);
-//                jp.add(new JLabel("9상영관(백신패스관)"));
-//                jp.add(la);
-//                jpanel9.add(jp);
-//            }
-////            String title = m.movieStartHour + ":" + m.movieStartMinute;
-////            JLabel la = new JLabel(title);
-////            JPanel jp = new JPanel();
-////           // jp.setSize(100,100);
-////            jp.setBackground(Color.gray);
-////            jp.add(la);
-////            jpanel.add(jp);
-//            jpanel.add(jpanel1);
-//            jpanel.add(jpanel20);
-//            jpanel.add(jpanel30);
-//            jpanel.add(jpanel40);
-//            jpanel.add(jpanel50);
-//            jpanel.add(jpanel6);
-//            jpanel.add(jpanel7);
-//            jpanel.add(jpanel8);
-//            jpanel.add(jpanel9);
-//        }
+        JPanel btnPanel = new JPanel();
+        btnPanel.setBackground(Color.white);
         JButton btnBack = new JButton("이전으로");
-        jpanel.add(btnBack);
+        btnBack.setForeground(Color.WHITE);
+        btnBack.setBackground(Color.gray);
+        btnPanel.add(btnBack);
+        cneterPanel.add(btnPanel);
         btnBack.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new movieReservation1().setFrame();
                 dispose();
             }
         });
-        return jpanel;
+        return bigPanel;
     }
 
     JPanel eastPanel() {
