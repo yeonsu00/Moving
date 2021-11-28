@@ -74,7 +74,22 @@ public class movieReservation2 extends JFrame {
 //            jpanel.add(la);
 //        }
         for(MovieSchedule m: movie.scheduleList){
-            String title = m.movieStartHour + ":" + m.movieStartMinute;
+            String hour = "";
+            String min ="";
+            if(m.movieStartMinute<10){
+                min+="0"+m.movieStartMinute;
+            }
+            else {
+                min+=m.movieStartMinute;
+            }
+            if(m.movieStartHour<10){
+                hour+="0"+m.movieStartHour;
+            }
+            else {
+                hour+=m.movieStartHour;
+            }
+
+            String title = hour + ":" + min;
             JLabel la = new JLabel(title);
             JPanel jp = new JPanel();
            // jp.setSize(100,100);
