@@ -19,7 +19,7 @@ import java.util.Scanner;
 import javax.swing.*;
 
 public class Seats extends JFrame implements Manageable {
-    String[] curSeatTxt = new String[16];
+
     Seat[][] seatArray;
 
     Seats(String hallName) {
@@ -54,21 +54,19 @@ public class Seats extends JFrame implements Manageable {
             public void actionPerformed(ActionEvent e) {
                 try {
                     ArrayList<Seat> checkedSeat = new ArrayList<>();
-                    boolean isZero=true;
+                    boolean isZero = true;
                     for (Seat[] sArr : seatArray) {
                         for (Seat sArr2 : sArr) {
-                            if (sArr2.isChecked == true)
-                            {
+                            if (sArr2.isChecked == true) {
                                 checkedSeat.add(sArr2);
-                                isZero=false;
+                                isZero = false;
                             }
 
 
                         }
 
                     }
-                    if (isZero==true)
-                    {
+                    if (isZero == true) {
                         JOptionPane.showMessageDialog(null, "좌석 선택을 마치세요.");
                         return;
                     }
@@ -179,6 +177,7 @@ public class Seats extends JFrame implements Manageable {
 
     public void readCurrentSeat(String hallName) {
         BufferedReader reader = null;
+        String[] curSeatTxt = new String[16];
         try {
             reader = new BufferedReader(
                     new FileReader(hallName + ".txt")
@@ -196,14 +195,15 @@ public class Seats extends JFrame implements Manageable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        changeReserved();
+
+        changeReserved(curSeatTxt);
 
     }
 
-    public void changeReserved() {
+    public void changeReserved(String[] curSeatTxt) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 16; j++) {
-                if (this.curSeatTxt[i].charAt(j) == '1') {
+                if (curSeatTxt[i].charAt(j) == '1') {
                     seatArray[i][j].setBackground(Color.BLACK);
                     System.out.println(i + "  " + j);
                 }
