@@ -22,7 +22,7 @@ public class Seats extends JFrame implements Manageable {
     String[] curSeatTxt = new String[16];
     Seat[][] seatArray;
 
-    Seats() {
+    Seats(String hallName) {
         setTitle("자리 예매");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -154,13 +154,12 @@ public class Seats extends JFrame implements Manageable {
         add(allSeatPanel);
 
         super.pack();
-
+        readCurrentSeat(hallName);
         setVisible(true);
     }
 
     public static void main(String args[]) {
-        Seats mSeat = new Seats();
-        mSeat.readCurrentSeat();
+        Seats mSeat = new Seats("seats");
     }
 
     @Override
@@ -178,11 +177,11 @@ public class Seats extends JFrame implements Manageable {
         return false;
     }
 
-    public void readCurrentSeat() {
+    public void readCurrentSeat(String hallName) {
         BufferedReader reader = null;
         try {
             reader = new BufferedReader(
-                    new FileReader("seats.txt")
+                    new FileReader(hallName + ".txt")
             );
 
             String str;
@@ -211,5 +210,6 @@ public class Seats extends JFrame implements Manageable {
             }
         }
     }
+
 
 }
