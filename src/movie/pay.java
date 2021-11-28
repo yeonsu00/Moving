@@ -9,7 +9,7 @@ import javax.swing.border.TitledBorder;
 import java.io.*;
 import java.util.*;
 public class pay extends JFrame {
-
+    static ArrayList<Seat> seatArr;
 
     public pay() throws IOException {
         setTitle("예매확인");
@@ -97,6 +97,12 @@ public class pay extends JFrame {
         BufferedReader br = new BufferedReader(new FileReader("reservation.txt"));
         s = br.readLine();
         String[] array = s.split("/");
+
+        //일단 여기에 추가 했습니다
+        array[0] = Integer.toString(seatArr.size());
+        System.out.println(seatArr.size());
+        //여기까지
+
         people=new JLabel(array[0]+"명");
         people.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
         top.add(people);//사람 수
@@ -108,6 +114,8 @@ public class pay extends JFrame {
         totalMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
         top.add(totalMoney);//총 결제금액
         //money.setHorizontalAlignment(JLabel.CENTER);
+
+
 
 
         wholeMoney=new JLabel(result*ticket+"원");

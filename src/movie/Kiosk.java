@@ -1,8 +1,5 @@
 package movie;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 import mgr.Factory;
 import mgr.Manager;
@@ -14,7 +11,7 @@ public class Kiosk {
     static Manager<Movie> movieMgr = new Manager();
     static Manager<MovieSchedule> scheduleMgr = new Manager();
     //static Manager<ScreeningHall> hallMgr = new Manager();
-    static Manager<Seat> seatMgr = new Manager();
+    static Manager<Seats> seatMgr = new Manager();
 
     void run() {
 //        userMgr.readAll("members.txt", new Factory<User>() {
@@ -95,7 +92,7 @@ public class Kiosk {
         }
     }
 
-    static Seat findSeat(String kwd) {
+    static Seats findSeat(String kwd) {
         return seatMgr.find(kwd);
     }
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Reservation extends section{
     Scanner s=new Scanner(System.in);
-    ArrayList <Seat> seatList=new ArrayList<>();
+    ArrayList <Seats> seatList=new ArrayList<>();
     ArrayList <Movie> movieList=new ArrayList<>();
 
     public void res()
