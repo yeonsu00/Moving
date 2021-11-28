@@ -1,15 +1,12 @@
 package movie;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -36,6 +33,8 @@ public class movieReservation1 extends JFrame {
     ImageIcon changeIcon9;
     ImageIcon changeIcon10;
     ImageIcon changeIcon11;
+    JScrollPane mainScroll;
+
 
     public void setFrame() {
 
@@ -45,7 +44,7 @@ public class movieReservation1 extends JFrame {
         c.setLayout(new BorderLayout());
 
 //		JLabel background = new JLabel(new ImageIcon("image/image1.png"));
-//		JButton jbutton = new JButton(new ImageIcon("image/image2.png"));
+//		JButton jbutton = new JButton(new ImageIcon("image/1002.png"));
 //		JFrame J = new JFrame();
 //
 //		J.add(background);
@@ -108,66 +107,129 @@ public class movieReservation1 extends JFrame {
         return "";
     }
     void bringImage() {
-        ImageIcon image1 = new ImageIcon("image/image1.png");
+//        ArrayList<String> arr = new ArrayList<String>();
+//        int num = 0;
+//        if((arr.size()%4) == 0) {
+//            num = arr.size()/4;
+//        }
+//        else {
+//            num = arr.size()/4;
+//            num+=1;
+//        }
+//
+//        JLabel labels[] = new JLabel[(4*num)];
+//        for (int i =  0; i < 4*num; i++)
+//        {
+//            int overlap = 0;
+//            if(i == arr.size()) {
+//                break;
+//            }
+//            Media m = null;
+//            String title = arr.get(i);
+//            for(int j = 0; j<i; j++) {
+//                String title2 = "";
+//                title2 = arr.get(j);
+//                if(title.equals(title2)) {
+//                    overlap++;
+//                    break;
+//                }
+//            }
+//            if(overlap!=0) {
+//                continue;
+//            }
+//            m = Main.mediaMgr.find(title);
+//            String address_2 = "mediaImage/"+m.num+".jpg"; //�̹��� ��θ� String �������� ����
+//            ImageIcon Icon = new ImageIcon(address_2);
+//            Image img=Icon.getImage();
+//            Image changeImg = img.getScaledInstance(250,300, Image.SCALE_SMOOTH); //�̹��� ũ�� ���� ����
+//            ImageIcon changeIcon = new ImageIcon(changeImg);
+//            labels[i] = new JLabel(changeIcon);
+//            labels[i].setText(arr.get(i));
+//            labels[i].setHorizontalTextPosition(JLabel.CENTER);
+//            labels[i].setVerticalTextPosition(JLabel.BOTTOM);
+//            labels[i].addMouseListener(new MouseAdapter() {
+//                @Override
+//                public void mouseClicked(MouseEvent e) {
+//                    clickEvent(e, null); // �޼ҵ�� ��û
+//                }
+//            });
+//            panel.add(labels[i]);
+//        }
+
+        ImageIcon image1 = new ImageIcon("image/1001.png");
         Image im1 = image1.getImage();
         Image changeImg1 = im1.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon1 = new ImageIcon(changeImg1);
 
-        ImageIcon image2 = new ImageIcon("image/image2.png");
+        ImageIcon image2 = new ImageIcon("image/1002.png");
         Image im2 = image2.getImage();
         Image changeImg2 = im2.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon2 = new ImageIcon(changeImg2);
 
-        ImageIcon image3 = new ImageIcon("image/image3.png");
+        ImageIcon image3 = new ImageIcon("image/1003.png");
         Image im3 = image3.getImage();
         Image changeImg3 = im3.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon3 = new ImageIcon(changeImg3);
 
-        ImageIcon image4 = new ImageIcon("image/image4.png");
+        ImageIcon image4 = new ImageIcon("image/1004.png");
         Image im4 = image4.getImage();
         Image changeImg4 = im4.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon4 = new ImageIcon(changeImg4);
 
-        ImageIcon image5 = new ImageIcon("image/image5.png");
+        ImageIcon image5 = new ImageIcon("image/1005.png");
         Image im5 = image5.getImage();
         Image changeImg5 = im5.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon5 = new ImageIcon(changeImg5);
 
-        ImageIcon image6 = new ImageIcon("image/image6.png");
+        ImageIcon image6 = new ImageIcon("image/1006.png");
         Image im6 = image6.getImage();
         Image changeImg6 = im6.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon6 = new ImageIcon(changeImg6);
 
-        ImageIcon image7 = new ImageIcon("image/image7.png");
+        ImageIcon image7 = new ImageIcon("image/1007.png");
         Image im7 = image7.getImage();
         Image changeImg7 = im7.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon7 = new ImageIcon(changeImg7);
 
-        ImageIcon image8 = new ImageIcon("image/image8.png");
+        ImageIcon image8 = new ImageIcon("image/1008.png");
         Image im8 = image8.getImage();
         Image changeImg8 = im8.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon8 = new ImageIcon(changeImg8);
 
-        ImageIcon image9 = new ImageIcon("image/image9.png");
+        ImageIcon image9 = new ImageIcon("image/1009.png");
         Image im9 = image9.getImage();
         Image changeImg9 = im9.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon9 = new ImageIcon(changeImg9);
 
-        ImageIcon image10 = new ImageIcon("image/image10.png");
+        ImageIcon image10 = new ImageIcon("image/1010.png");
         Image im10 = image10.getImage();
         Image changeImg10 = im10.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon10 = new ImageIcon(changeImg10);
 
-        ImageIcon image11 = new ImageIcon("image/image11.png");
+        ImageIcon image11 = new ImageIcon("image/1011.png");
         Image im11 = image11.getImage();
         Image changeImg11 = im11.getScaledInstance(300, 350, Image.SCALE_SMOOTH);
         changeIcon11 = new ImageIcon(changeImg11);
     }
     JPanel centerPanel() {
-
-        bringImage();
-
+        JScrollPane mainScroll;
+        JPanel bigJpanel = new JPanel();
         JPanel jpanel = new JPanel();
+        mainScroll = new JScrollPane();
+        mainScroll.setViewportView(jpanel);
+        mainScroll.setBounds(0, 40, 1330, 900);
+        mainScroll.getViewport().getView().setBackground(Color.WHITE);
+        mainScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        add(mainScroll);
+
+        bigJpanel.setLayout(null);
+
+//        scroll = new JScrollPane();
+//        scroll.setBounds(0, 40, 1330, 900);
+//        scroll.setViewportView(jpanel);
+//        scroll.getViewport().getView().setBackground(Color.WHITE);
+//        jpanel.add(scroll);
+        bringImage();
 
         JLabel la1 = new JLabel(changeIcon1);
         JLabel la2 = new JLabel(changeIcon2);
@@ -195,6 +257,7 @@ public class movieReservation1 extends JFrame {
         jpanel.add(la10);
         jpanel.add(la11);
 
+        bigJpanel.add(jpanel);
         la1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -314,4 +377,5 @@ public class movieReservation1 extends JFrame {
         // TODO Auto-generated method stub
         setTitle("MovieChoose");
     }
+
 }
