@@ -2,6 +2,8 @@ package movie;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -80,6 +82,14 @@ public class movieReservation2 extends JFrame {
             jp.add(la);
             jpanel.add(jp);
         }
+        JButton btnBack = new JButton("이전으로");
+        jpanel.add(btnBack);
+        btnBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new movieReservation1().setFrame();
+                dispose();
+            }
+        });
         return jpanel;
     }
 
