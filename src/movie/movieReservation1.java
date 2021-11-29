@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
@@ -65,6 +67,7 @@ public class movieReservation1 extends JFrame {
 
         c.add(northPanel(), BorderLayout.NORTH);
         c.add(centerPanel(), BorderLayout.CENTER);
+        c.add(southPanel(), BorderLayout.SOUTH);
 
         setSize(1920, 1080);
         setVisible(true);
@@ -298,6 +301,25 @@ public class movieReservation1 extends JFrame {
 
         return jpanel;
 
+    }
+
+    JPanel southPanel() {
+        JPanel jpanel2 = new JPanel();
+
+        JPanel btnPanel = new JPanel();
+        JButton btnBack = new JButton("이전으로");
+        btnBack.setForeground(Color.WHITE);
+        btnBack.setBackground(Color.gray);
+        btnPanel.add(btnBack);
+        jpanel2.add(btnPanel);
+        btnBack.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new Kiosk2();
+                dispose();
+            }
+        });
+
+        return jpanel2;
     }
     public void message(String code) {
         readMovie();
