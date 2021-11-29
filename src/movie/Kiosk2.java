@@ -43,13 +43,6 @@ public class Kiosk2 extends JFrame {
 
         super.pack();
 
-//        la1.addMouseListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                new movieReservation1().setFrame();
-//                dispose();
-//            }
-//        });
-
         la1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -57,12 +50,7 @@ public class Kiosk2 extends JFrame {
                 dispose();
             }
         });
-//        la2.addMouseListener(new ActionListener() {
-//            public void actionPerformed(ActionEvent e) {
-//                new Foods().foods();
-//                dispose();
-//            }
-//        });
+
 
         la2.addMouseListener(new MouseAdapter() {
             @Override
