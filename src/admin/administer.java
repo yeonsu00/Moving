@@ -71,7 +71,6 @@ public class administer {
         }
     }
 
-
     static Movie findMovie(String kwd) {
         return (Movie) movieMgr.find(kwd);
     }
