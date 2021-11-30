@@ -60,7 +60,7 @@ public class movieReservation1 extends JFrame {
         c.add(centerPanel(), BorderLayout.CENTER);
         c.add(southPanel(), BorderLayout.SOUTH);
 
-        setSize(1920, 1080);
+        setSize(1950, 1040);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -104,11 +104,6 @@ public class movieReservation1 extends JFrame {
         return jpanel;
     }
 
-    public void readMovie(String movieCode) {
-        code = movieCode;
-        movie = Kiosk.findMovie(movieCode);
-    }
-
     JPanel southPanel() {
         JPanel jpanel2 = new JPanel();
 
@@ -127,6 +122,12 @@ public class movieReservation1 extends JFrame {
 
         return jpanel2;
     }
+
+    public void readMovie(String movieCode) {
+        code = movieCode;
+        movie = Kiosk.findMovie(movieCode);
+    }
+
     public void message(String code) {
         readMovie(code);
         String age = "";
