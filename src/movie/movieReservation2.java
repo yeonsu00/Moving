@@ -6,6 +6,8 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -120,7 +122,7 @@ public class movieReservation2 extends JFrame {
                     if(num == 0){
                         oneLinePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 50, 7));
                         oneLinePanel.setBorder(new TitledBorder(new LineBorder(Color.gray,3), ""));
-//
+
                         JPanel hallNameP = new JPanel();
                         hallNameP.setPreferredSize(new Dimension(150,50));
                         hallNameP.add(new JLabel(halls[i]));
@@ -137,6 +139,18 @@ public class movieReservation2 extends JFrame {
                     timeJp.add(la);
                     oneLinePanel.add(timeJp);
                     cneterPanel.add(oneLinePanel);
+
+                    String fileName = "."+ hour +".."+ min;
+
+                    la.addMouseListener(new MouseAdapter() {
+                        @Override
+                        public void mouseClicked(MouseEvent e) {
+
+                            new Seats(m.theaterNumber+fileName);
+                            //new Kiosk2();
+                            dispose();
+                        }
+                    });
                 }
             }
             bigPanel.add(cneterPanel,BorderLayout.CENTER);
