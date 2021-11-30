@@ -19,10 +19,11 @@ import java.util.Scanner;
 import javax.swing.*;
 
 public class Seats extends JFrame implements Manageable {
-    String[] curSeatTxt = new String[16];
+
     Seat[][] seatArray;
 
-    Seats() {
+
+    Seats(String hallName) {
         setTitle("자리 예매");
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,63 +32,21 @@ public class Seats extends JFrame implements Manageable {
         setResizable(false);
         setLayout(new GridLayout(2, 1));
 
-        JLabel screenLabel = new JLabel("Screen");
-        screenLabel.setFont(new Font("Serif", Font.BOLD, 30));
-        setForeground(Color.WHITE);
-        screenLabel.setOpaque(true);
-        screenLabel.setBackground(Color.black);
+        JPanel allScreenPanel = new JPanel(new BorderLayout());
+        addScreenPanelTo(allScreenPanel);
+        addOperPanelTo(allScreenPanel);
+        this.add(allScreenPanel);
 
-        JPanel screenPanel = new JPanel(new GridLayout());
-        screenLabel.setHorizontalAlignment(JLabel.CENTER);
-        screenPanel.add(screenLabel);
+        JPanel allSeatPanel =makeSeatPanelTo();
+        this.add(allSeatPanel);
 
-        JPanel allScreen = new JPanel(new BorderLayout());
+        readCurrentSeat(hallName);
 
-        allScreen.add(screenPanel, BorderLayout.CENTER); // 스크린 추가
+        super.pack();
+        setVisible(true);
+    }
 
-        JPanel operButtonPanel = new JPanel(new FlowLayout());
-        JButton goBack = new JButton("←");
-
-        JButton goForward = new JButton("→");
-        goForward.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    ArrayList<Seat> checkedSeat = new ArrayList<>();
-                    boolean isZero=true;
-                    for (Seat[] sArr : seatArray) {
-                        for (Seat sArr2 : sArr) {
-                            if (sArr2.isChecked == true)
-                            {
-                                checkedSeat.add(sArr2);
-                                isZero=false;
-                            }
-
-
-                        }
-
-                    }
-                    if (isZero==true)
-                    {
-                        JOptionPane.showMessageDialog(null, "좌석 선택을 마치세요.");
-                        return;
-                    }
-                    pay.seatArr = checkedSeat;
-                    new pay();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-        goBack.setPreferredSize(new Dimension(60, 30));
-        goForward.setPreferredSize(new Dimension(60, 30));
-        operButtonPanel.add(goBack);
-        operButtonPanel.add(goForward);
-        operButtonPanel.setPreferredSize(new Dimension(70, 0));
-        allScreen.add(operButtonPanel, BorderLayout.WEST); // 스크린 추가
-
-        add(allScreen);
-
+    private JPanel makeSeatPanelTo() {
         JPanel allSeatPanel = new JPanel();
         allSeatPanel.setLayout(new FlowLayout());
 
@@ -137,11 +96,8 @@ public class Seats extends JFrame implements Manageable {
                 } else if (13 < j) {
                     seatPanel6.add(seatArray[i][j]);
                 }
-
             }
-
         }
-
         allSeatPanel.add(seatPanel1);
         allSeatPanel.add(seatPanel2);
         allSeatPanel.add(aisle1);
@@ -150,17 +106,50 @@ public class Seats extends JFrame implements Manageable {
         allSeatPanel.add(aisle2);
         allSeatPanel.add(seatPanel5);
         allSeatPanel.add(seatPanel6);
-//        allSeatPanel.add(radioPanel);
-        add(allSeatPanel);
 
-        super.pack();
+        return allSeatPanel;
+    }
 
-        setVisible(true);
+    private void addOperPanelTo(JPanel allScreenPanel) {
+        JPanel operButtonPanel = new JPanel(new FlowLayout());
+        JButton goBack = new JButton("←");
+
+        JButton goForward = new JButton("→");
+        goForward.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    ArrayList<Seat> checkedSeat = new ArrayList<>();
+                    boolean isZero = true;
+                    for (Seat[] sArr : seatArray) {
+                        for (Seat sArr2 : sArr) {
+                            if (sArr2.isChecked == true) {
+                                checkedSeat.add(sArr2);
+                                isZero = false;
+                            }
+                        }
+                    }
+                    if (isZero == true) {
+                        JOptionPane.showMessageDialog(null, "좌석 선택을 마치세요.");
+                        return;
+                    }
+                    pay.seatArr = checkedSeat;
+                    new pay();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        goBack.setPreferredSize(new Dimension(60, 30));
+        goForward.setPreferredSize(new Dimension(60, 30));
+        operButtonPanel.add(goBack);
+        operButtonPanel.add(goForward);
+        operButtonPanel.setPreferredSize(new Dimension(70, 0));
+        allScreenPanel.add(operButtonPanel, BorderLayout.WEST); // 스크린 추가
     }
 
     public static void main(String args[]) {
-        Seats mSeat = new Seats();
-        mSeat.readCurrentSeat();
+        Seats mSeat = new Seats("seats");
     }
 
     @Override
@@ -178,11 +167,12 @@ public class Seats extends JFrame implements Manageable {
         return false;
     }
 
-    public void readCurrentSeat() {
+    public void readCurrentSeat(String hallName) {
         BufferedReader reader = null;
+        String[] curSeatTxt = new String[16];
         try {
             reader = new BufferedReader(
-                    new FileReader("seats.txt")
+                    new FileReader(hallName + ".txt")
             );
 
             String str;
@@ -197,19 +187,37 @@ public class Seats extends JFrame implements Manageable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        changeReserved();
+
+        changeReserved(curSeatTxt);
 
     }
 
-    public void changeReserved() {
+    public void changeReserved(String[] curSeatTxt) {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 16; j++) {
-                if (this.curSeatTxt[i].charAt(j) == '1') {
+                if (curSeatTxt[i].charAt(j) == '1') {
                     seatArray[i][j].setBackground(Color.BLACK);
                     System.out.println(i + "  " + j);
                 }
             }
         }
     }
+
+    private void addScreenPanelTo(JPanel allScreenPanel) {
+        JLabel screenLabel = new JLabel("Screen");
+        screenLabel.setFont(new Font("Serif", Font.BOLD, 30));
+        setForeground(Color.WHITE);
+        screenLabel.setOpaque(true);
+        screenLabel.setBackground(Color.black);
+
+        JPanel screenPanel = new JPanel(new GridLayout());
+        screenLabel.setHorizontalAlignment(JLabel.CENTER);
+        screenPanel.add(screenLabel);
+
+        allScreenPanel.add(screenPanel, BorderLayout.CENTER); // 스크린 추가
+
+
+    }
+
 
 }
