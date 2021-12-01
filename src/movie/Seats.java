@@ -22,7 +22,6 @@ public class Seats extends JFrame implements Manageable {
 
     Seat[][] seatArray;
 
-
     Seats(String hallName) {
         setTitle("자리 예매");
 
@@ -135,6 +134,7 @@ public class Seats extends JFrame implements Manageable {
                     }
                     pay.seatArr = checkedSeat;
                     new pay();
+                    dispose();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }

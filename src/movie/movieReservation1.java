@@ -130,7 +130,15 @@ public class movieReservation1 extends JFrame {
 
     public void message(String code) {
         readMovie(code);
-        String age = "";
+//        String age = movie.ageLimit;
+//        System.out.println(age);
+//        if (age == "0") {
+//            JOptionPane.showMessageDialog(null, "이 영화는 전체 관람가입니다.");
+//        }
+//        else {
+//            JOptionPane.showMessageDialog(null, "이 영화는 전체 관람가입니다.");
+//            JOptionPane.showMessageDialog(null, "이 영화는 " + age + "세 이상 관람가입니다.");
+//        }
         JOptionPane.showMessageDialog(null, "이 영화는 " + movie.ageLimit + "세 이상 관람가입니다.");
         dispose();
     }

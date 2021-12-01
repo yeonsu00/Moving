@@ -145,7 +145,6 @@ public class movieReservation2 extends JFrame {
                     la.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
-
                             new Seats(m.theaterNumber+fileName);
                             //new Kiosk2();
                             dispose();
