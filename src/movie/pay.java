@@ -9,20 +9,19 @@ import javax.swing.border.TitledBorder;
 import java.io.*;
 import java.util.*;
 public class pay extends JFrame {
-    static ArrayList<Seat> selectedSeatArr;
-    static String hallName;
+    static ArrayList<Seat> seatArr;
 
     public pay() throws IOException {
         setTitle("예매확인");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel num,money,resulttxt,people,wholeMoney,totalMoney,seatInfo,seatInfo2;
         JPanel top,mid,bot;
-        JButton txt1,txt2,txt3,txt4;
+
         int ticket=12000;
 
 
 
-        top=new JPanel( new GridLayout(4,3));
+        top=new JPanel( new GridLayout(2,3));
         mid=new JPanel(new GridLayout(2,3));
         bot=new JPanel(new GridLayout(1,1));
 
@@ -40,7 +39,7 @@ public class pay extends JFrame {
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image card = cardImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
-        Image card2 = card.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+        Image card2 = card.getScaledInstance(400, 300, Image.SCALE_DEFAULT);
         //새로 조절된 사이즈의 이미지(im2)를 가지는 ImageIcon 객체를 다시 생성
         ImageIcon cardImage2 = new ImageIcon(card2);
 
@@ -49,7 +48,7 @@ public class pay extends JFrame {
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image phone = phoneImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
-        Image phone2 = phone.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+        Image phone2 = phone.getScaledInstance(400, 300, Image.SCALE_DEFAULT);
         //새로 조절된 사이즈의 이미지(im2)를 가지는 ImageIcon 객체를 다시 생성
         ImageIcon phoneImage2 = new ImageIcon(phone2);
 
@@ -58,7 +57,7 @@ public class pay extends JFrame {
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image kakao = kakaoImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
-        Image kakao2 = kakao.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+        Image kakao2 = kakao.getScaledInstance(400, 300, Image.SCALE_DEFAULT);
         //새로 조절된 사이즈의 이미지(im2)를 가지는 ImageIcon 객체를 다시 생성
         ImageIcon kakaoImage2 = new ImageIcon(kakao2);
 
@@ -67,7 +66,7 @@ public class pay extends JFrame {
         //이미지를 실제로 갖고 있는 Image객체 뽑아오기
         Image payco = paycoImage.getImage();
         //뽑아온 이미지 객체 사이즈를 새롭게 만들기!
-        Image payco2 = payco.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+        Image payco2 = payco.getScaledInstance(400, 300, Image.SCALE_DEFAULT);
         //새로 조절된 사이즈의 이미지(im2)를 가지는 ImageIcon 객체를 다시 생성
         ImageIcon paycoImage2 = new ImageIcon(payco2);
 
@@ -87,9 +86,9 @@ public class pay extends JFrame {
         num.setHorizontalAlignment(JLabel.CENTER);
         top.add(num);
 
-        money=new JLabel("총 결제금액");
-        money.setHorizontalAlignment(JLabel.CENTER);
-        top.add(money);
+        seatInfo=new JLabel("좌석정보");
+        seatInfo.setHorizontalAlignment(JLabel.CENTER);
+        top.add(seatInfo);
 
         resulttxt=new JLabel("결제 필요금액");
         resulttxt.setHorizontalAlignment(JLabel.CENTER);
@@ -102,21 +101,24 @@ public class pay extends JFrame {
 
         String[] array =new String[10];
         //일단 여기에 추가 했습니다
-        array[0] = Integer.toString(selectedSeatArr.size());
-        System.out.println("===========\n"+selectedSeatArr.size());
-        //System.out.println("===========\n"+selectedSeatArr);
+        array[0] = Integer.toString(seatArr.size());
+        System.out.println("===========\n"+seatArr.size());
+        //System.out.println("===========\n"+seatArr);
         //여기까지
 
         people=new JLabel(array[0]+"명");
         people.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
         top.add(people);//사람 수
 
+        //top 패널 좌석결과 출력
+        BufferedReader br = new BufferedReader(new FileReader("tempSeatInfo.txt"));
+        String str;
+        str = br.readLine();
+        seatInfo2=new JLabel(str);
+        seatInfo2.setHorizontalAlignment(JLabel.CENTER);
+        top.add(seatInfo2);
 
-        String from=array[0];
         int result=Integer.parseInt(array[0]);
-        totalMoney=new JLabel(result*ticket+"원");
-        totalMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
-        top.add(totalMoney);//총 결제금액
         //money.setHorizontalAlignment(JLabel.CENTER);
 
 
@@ -126,6 +128,8 @@ public class pay extends JFrame {
         top.add(wholeMoney);//결제 필요금액
         wholeMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
         top.setBorder(new TitledBorder("예매확인"));//경계선 추가
+
+
 
         //mid 패널 결제종류선택
 
@@ -156,7 +160,7 @@ public class pay extends JFrame {
         add(mid,BorderLayout.CENTER);
         add(bot,BorderLayout.SOUTH);
 
-        setSize(800,1000);
+        setSize(800,800);
         setLocationRelativeTo(null);
         setVisible(true);
 
