@@ -12,11 +12,12 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 
 public class Kiosk2 extends JFrame {
+    JFrame jf = new JFrame("키오스크");
     Kiosk2() {
         //setTitle("키오스크");
-        JFrame jf = new JFrame("키오스크");
+
         jf.setSize(1950, 1040);
-        jf.setLocation(700, 400);
+//        jf.setLocation(null);
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel2 = new JPanel();
@@ -73,7 +74,7 @@ public class Kiosk2 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 new movieReservation1().setFrame();
-                dispose();
+                jf.dispose();
             }
         });
 
@@ -82,7 +83,7 @@ public class Kiosk2 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 new Foods();
-                dispose();
+                jf.dispose();
             }
         });
 
@@ -139,7 +140,7 @@ public class Kiosk2 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 new movieReservation1().setFrame();
-                dispose();
+                jf.dispose();
             }
         });
 
@@ -148,7 +149,7 @@ public class Kiosk2 extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 new Foods();
-                dispose();
+                jf.dispose();
             }
         });
 
