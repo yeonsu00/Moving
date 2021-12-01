@@ -21,26 +21,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import mgr.Factory;
-import mgr.Manager;
-
 public class Foods {
     int count = 0;
     String show = "";
     Scanner scan = new Scanner(System.in);
-    static Manager<Food> foodMgr = new Manager();
+    int sum = 0;
 
-    void run() {
-        foodMgr.readAll("food.txt", new Factory<Food>() {
-            public Food create() {
-                return new Food();
-            }
-        });
-        foods();
-    }
-
-    void foods() {
-        ArrayList<Food> foodList = new ArrayList<>();
+    public Foods() {
         JFrame frame = new JFrame("스낵");
         frame.setBounds(0, 0, 1500, 1000);
         frame.setBackground(Color.black);
@@ -49,19 +36,24 @@ public class Foods {
         North.setLayout(null);
         North.setSize(0, 500);
 
-        ArrayList<Food> menu = foodList;
-        JButton button[] = new JButton[menu.size()];
-        TextField subject[] = new TextField[menu.size()];
-        Button minus[] = new Button[menu.size()];
-        Button plus[] = new Button[menu.size()];
-        JButton check[] = new JButton[menu.size()];
-        Label label[] =new Label[menu.size()];
-        ImageIcon icon[] = new ImageIcon[menu.size()];
+        String[] menu = { "메인콤보", "더블콤보", "스몰콤보", "라지콤보", "고소팝콘(L)", "달콤팝콘(L)", "더블치즈팝콘(L)", "바질어니언팝콘(L)", "고소팝콘(M)",
+                "버질어니언팝콘(M)", "달콤팝콘(M)", "더블치즈팝콘(M)", "콜라L", "사이다L", "콜라M", "사이다L", "칠리치즈나쵸", "플레인핫도그", "칠리치즈핫도그",
+                "오징어" };
+        int price[] = { 9000, 12000, 6500, 14000, 5000, 6000, 6000, 6000, 4500, 5500, 5500, 5500, 3000, 3000, 2500,
+                2500, 4900, 4500, 5000, 3500 };
+        JButton button[] = new JButton[menu.length];
+        TextField subject[] = new TextField[menu.length];
+        Button minus[] = new Button[menu.length];
+        Button plus[] = new Button[menu.length];
+        JButton check[] = new JButton[menu.length];
+        Label label[] = new Label[menu.length];
+        ImageIcon icon[] = new ImageIcon[menu.length];
 
-        // 버튼 설정 부분
-        for (int i = 0; i < menu.size(); i++) {
+        JButton buttons=new JButton("TEST");
 
-            button[i] = new JButton(menu.get(i).name);
+        for (int i = 0; i < menu.length; i++) {
+
+            button[i] = new JButton(menu[i]);
             if (i < 10) {
                 button[i].setBounds(25 + i * 150, 50, 100, 100);
             } else {
@@ -83,7 +75,7 @@ public class Foods {
             plus[i].setBounds(button[i].getX() + (100 - 20), subject[i].getY(), 20, 20);
             plus[i].setEnabled(false);
 
-            label[i] = new Label(menu.get(i).price + "원");
+            label[i] = new Label(price[i] + "원");
             label[i].setBounds(button[i].getX() + 20, subject[i].getY() - 25, 100, 20);
 
             check[i] = new JButton("확인");
@@ -98,13 +90,11 @@ public class Foods {
             North.add(check[i]);
         }
 
-        // 중앙
         TextArea ta = new TextArea("", 0, 0, TextArea.SCROLLBARS_VERTICAL_ONLY);
-        ta.setText("   상품명        단가        수량        합계\n\n");
+        ta.setText("   상품명        가격        수량        합계\n\n");
         ta.setBackground(Color.white);
         ta.setEditable(false);
 
-        // 남쪽
         Panel South = new Panel();
 
         Button button1 = new Button("주문");
@@ -119,12 +109,12 @@ public class Foods {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null, ta.getText() + " 주문되었습니다. \n이용해주셔서 감사합니다.");
-                for (int i = 0; i < menu.size(); i++) {
+                for (int i = 0; i < menu.length; i++) {
                     button[i].setEnabled(true);
                     minus[i].setEnabled(false);
                     plus[i].setEnabled(false);
                     subject[i].setText("0");
-                    ta.setText("      상품명           단가           수량           합계\n\n");
+                    ta.setText("      상품명           가격           수량           합계\n\n");
 
                 }
             }
@@ -134,12 +124,12 @@ public class Foods {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < menu.size(); i++) {
+                for (int i = 0; i < menu.length; i++) {
                     button[i].setEnabled(true);
                     minus[i].setEnabled(false);
                     plus[i].setEnabled(false);
                     subject[i].setText("0");
-                    ta.setText("   상품명        단가        수량        합계\n\n");
+                    ta.setText("   상품명        가격        수량        합계\n\n");
 
                 }
             }
@@ -166,7 +156,7 @@ public class Foods {
         });
 
         // 이벤트단
-        for (int i = 0; i < menu.size(); i++) {
+        for (int i = 0; i < menu.length; i++) {
             int j = i;
 
             // 햄버그 버튼 이벤트
@@ -217,12 +207,12 @@ public class Foods {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     show = button[j].getActionCommand();
-                    ta.append("   " + show + "       " + menu.get(j).price + "        " + count + "         "
-                            + menu.get(j).price * count + "원" + "\n");
+                    ta.append("   " + show + "       " + price[j] + "        " + count + "         "
+                            + price[j]* count + "원" + "\n");
                     check[j].setEnabled(false);
                 }
             });
-
+            frame.add(buttons);
         }
 
         // 끄기
@@ -234,13 +224,8 @@ public class Foods {
         });
     }
 
-    static Food findItem(String kwd) {
-        return (Food) foodMgr.find(kwd);
-    }
-
     public static void main(String[] args) {
-        Foods f = new Foods();
-        f.run();
+        new Foods();
     }
 
 }
