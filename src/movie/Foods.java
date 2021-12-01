@@ -21,6 +21,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
+
 public class Foods {
     int count = 0;
     String show = "";
@@ -48,8 +50,6 @@ public class Foods {
         JButton check[] = new JButton[menu.length];
         Label label[] = new Label[menu.length];
         ImageIcon icon[] = new ImageIcon[menu.length];
-
-        JButton buttons=new JButton("TEST");
 
         for (int i = 0; i < menu.length; i++) {
 
@@ -99,7 +99,7 @@ public class Foods {
 
         Button button1 = new Button("주문");
         Button button2 = new Button("초기화");
-        Button button3 = new Button("닫기");
+        Button button3 = new Button("뒤로");
         South.add(button1);
         South.add(button2);
         South.add(button3);
@@ -139,7 +139,8 @@ public class Foods {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                new Kiosk2();
+                frame.setVisible(false);
             }
         });
 
@@ -147,13 +148,6 @@ public class Foods {
         frame.add(ta, BorderLayout.CENTER);
         frame.add(South, BorderLayout.SOUTH);
         frame.setVisible(true);
-
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
 
         // 이벤트단
         for (int i = 0; i < menu.length; i++) {
@@ -207,21 +201,14 @@ public class Foods {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     show = button[j].getActionCommand();
-                    ta.append("   " + show + "       " + price[j] + "        " + count + "         "
-                            + price[j]* count + "원" + "\n");
+                    ta.append("   " + show + "       " + price[j] + "        " + count + "         " + price[j] * count
+                            + "원" + "\n");
                     check[j].setEnabled(false);
                 }
             });
-            frame.add(buttons);
         }
 
-        // 끄기
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                System.exit(0);
-            }
-        });
+
     }
 
     public static void main(String[] args) {
