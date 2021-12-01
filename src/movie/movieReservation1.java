@@ -1,10 +1,6 @@
 package movie;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Font;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -79,13 +75,14 @@ public class movieReservation1 extends JFrame {
 
     JPanel centerPanel() {
 
-        JPanel jpanel = new JPanel();
+        //JPanel jpanel = new JPanel(new FlowLayout(FlowLayout.LEFT,100, 9));
+        JPanel jpanel = new JPanel(new GridLayout(2,5,5,5));
 
-        for (int imageName = 1001; imageName < 1012; imageName++){
+        for (int imageName = 1001; imageName < 1011; imageName++){
             String sImageName = imageName+"";
             ImageIcon image = new ImageIcon("image/"+imageName+".png");
             Image im = image.getImage();
-            Image changeImg11 = im.getScaledInstance(250, 300, Image.SCALE_SMOOTH);
+            Image changeImg11 = im.getScaledInstance(350, 400, Image.SCALE_SMOOTH);
             ImageIcon changeIcon = new ImageIcon(changeImg11);
 
             JLabel la = new JLabel(changeIcon);
