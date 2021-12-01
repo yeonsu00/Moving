@@ -19,7 +19,6 @@ import javax.swing.*;
 public class Seats extends JFrame implements Manageable {
 
     Seat[][] seatArray;
-    String hallName;
 
 
     Seats(String hallName) {
@@ -36,10 +35,10 @@ public class Seats extends JFrame implements Manageable {
         addOperPanelTo(allScreenPanel);
         this.add(allScreenPanel);
 
-        JPanel allSeatPanel = makeSeatPanelTo();
+        JPanel allSeatPanel =makeSeatPanelTo();
         this.add(allSeatPanel);
-        this.hallName = hallName;
-        readCurrentSeat(this.hallName);
+
+        readCurrentSeat(hallName);
 
         super.pack();
         setVisible(true);
@@ -112,14 +111,6 @@ public class Seats extends JFrame implements Manageable {
     private void addOperPanelTo(JPanel allScreenPanel) {
         JPanel operButtonPanel = new JPanel(new FlowLayout());
         JButton goBack = new JButton("←");
-        goBack.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new movieReservation2(movieReservation2.code).setFrame();
-                dispose();
-
-            }
-        });
 
         JButton goForward = new JButton("→");
         goForward.addActionListener(new ActionListener() {
@@ -137,37 +128,38 @@ public class Seats extends JFrame implements Manageable {
                                 System.out.println("좌석: ["+sArr2.x+"],["+sArr2.y+"]");
                                 BufferedWriter bw = new BufferedWriter(new FileWriter("tempSeatInfo.txt", true));
                                 int num=sArr2.x;
+                                int num2=sArr2.y+1;
                                 String info="";
                                 switch (num) {
                                     case 0:
-                                        info="A-"+sArr2.y+" ";
+                                        info="A-"+num2+" ";
                                         break;
                                     case 1:
-                                        info="B-"+sArr2.y+" ";
+                                        info="B-"+num2+" ";
                                         break;
                                     case 2:
-                                        info="C-"+sArr2.y+" ";
+                                        info="C-"+num2+" ";
                                         break;
                                     case 3:
-                                        info="D-"+sArr2.y+" ";
+                                        info="D-"+num2+" ";
                                         break;
                                     case 4:
-                                        info="E-"+sArr2.y+" ";
+                                        info="E-"+num2+" ";
                                         break;
                                     case 5:
-                                        info="F-"+sArr2.y+" ";
+                                        info="F-"+num2+" ";
                                         break;
                                     case 6:
-                                        info="G-"+sArr2.y+" ";
+                                        info="G-"+num2+" ";
                                         break;
                                     case 7:
-                                        info="H-"+sArr2.y+" ";
+                                        info="H-"+num2+" ";
                                         break;
                                     case 8:
-                                        info="I-"+sArr2.y+" ";
+                                        info="I-"+num2+" ";
                                         break;
                                     case 9:
-                                        info="J-"+sArr2.y+" ";
+                                        info="J-"+num2+" ";
                                         break;
 
 
@@ -185,11 +177,8 @@ public class Seats extends JFrame implements Manageable {
                         return;
                     }
 
-                    pay.selectedSeatArr = checkedSeat;
-                    pay.hallName = hallName;
-
+                    pay.seatArr = checkedSeat;
                     new pay();
-                    dispose();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
