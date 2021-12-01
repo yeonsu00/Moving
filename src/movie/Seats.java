@@ -19,6 +19,7 @@ import javax.swing.*;
 public class Seats extends JFrame implements Manageable {
 
     Seat[][] seatArray;
+    String hallName;
 
 
     Seats(String hallName) {
@@ -35,10 +36,10 @@ public class Seats extends JFrame implements Manageable {
         addOperPanelTo(allScreenPanel);
         this.add(allScreenPanel);
 
-        JPanel allSeatPanel =makeSeatPanelTo();
+        JPanel allSeatPanel = makeSeatPanelTo();
         this.add(allSeatPanel);
-
-        readCurrentSeat(hallName);
+        this.hallName = hallName;
+        readCurrentSeat(this.hallName);
 
         super.pack();
         setVisible(true);
@@ -111,13 +112,15 @@ public class Seats extends JFrame implements Manageable {
     private void addOperPanelTo(JPanel allScreenPanel) {
         JPanel operButtonPanel = new JPanel(new FlowLayout());
         JButton goBack = new JButton("←");
-
         goBack.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+                new movieReservation2(movieReservation2.code).setFrame();
+                dispose();
+
             }
         });
+
 
         JButton goForward = new JButton("→");
 
@@ -185,7 +188,9 @@ public class Seats extends JFrame implements Manageable {
                         return;
                     }
 
-                    pay.seatArr = checkedSeat;
+                    pay.selectedSeatArr = checkedSeat;
+                    pay.hallName = hallName;
+
                     new pay();
                     dispose();
                 } catch (IOException ex) {

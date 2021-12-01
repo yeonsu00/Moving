@@ -1,13 +1,11 @@
 package movie;
 
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class payFin extends JFrame {
     JScrollPane scrollPane;
@@ -15,6 +13,7 @@ public class payFin extends JFrame {
     ImageIcon icon, reset;
 
     public payFin() {
+        modifySeatTxt();
         ImageIcon icon = new ImageIcon("image/Fin.png");
         ImageIcon reset = new ImageIcon("image/reset.jpg");
 
@@ -73,6 +72,46 @@ public class payFin extends JFrame {
         setVisible(true);
         setLocationRelativeTo(null);
 
+    }
+
+    private void modifySeatTxt() {
+        BufferedReader reader = null;
+        String[] curSeatTxt = new String[10];
+        try {
+            reader = new BufferedReader(
+                    new FileReader(pay.hallName + ".txt")
+            );
+
+            String str;
+            int count = 0;
+            while ((str = reader.readLine()) != null) {
+                curSeatTxt[count] = str;
+                count++;
+            }
+
+            reader.close();
+
+            for (Seat e : pay.selectedSeatArr)
+            {
+                char[] seatCharArray = curSeatTxt[e.x].toCharArray();
+                seatCharArray[e.y] = '1';
+                curSeatTxt[e.x] = new String(seatCharArray);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(pay.hallName + ".txt"));
+            for (String e : curSeatTxt)
+            {
+                writer.write(e+'\n');
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

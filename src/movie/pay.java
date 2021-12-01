@@ -9,7 +9,8 @@ import javax.swing.border.TitledBorder;
 import java.io.*;
 import java.util.*;
 public class pay extends JFrame {
-    static ArrayList<Seat> seatArr;
+    static ArrayList<Seat> selectedSeatArr;
+    static String hallName;
 
     public pay() throws IOException {
         setTitle("예매확인");
@@ -101,9 +102,9 @@ public class pay extends JFrame {
 
         String[] array =new String[10];
         //일단 여기에 추가 했습니다
-        array[0] = Integer.toString(seatArr.size());
-        System.out.println("===========\n"+seatArr.size());
-        //System.out.println("===========\n"+seatArr);
+        array[0] = Integer.toString(selectedSeatArr.size());
+        System.out.println("===========\n"+selectedSeatArr.size());
+        //System.out.println("===========\n"+selectedSeatArr);
         //여기까지
 
         people=new JLabel(array[0]+"명");
