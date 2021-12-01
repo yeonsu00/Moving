@@ -33,4 +33,6 @@ public class Seat extends JButton implements ActionListener {
             this.isChecked=true;
         }
     }
+
+
 }

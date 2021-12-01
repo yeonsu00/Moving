@@ -9,7 +9,8 @@ import javax.swing.border.TitledBorder;
 import java.io.*;
 import java.util.*;
 public class pay extends JFrame {
-    static ArrayList<Seat> seatArr;
+    static ArrayList<Seat> selectedSeatArr;
+    static String hallName;
 
     public pay() throws IOException {
         setTitle("예매확인");
@@ -101,9 +102,9 @@ public class pay extends JFrame {
 
         String[] array =new String[10];
         //일단 여기에 추가 했습니다
-        array[0] = Integer.toString(seatArr.size());
-        System.out.println("===========\n"+seatArr.size());
-        //System.out.println("===========\n"+seatArr);
+        array[0] = Integer.toString(selectedSeatArr.size());
+        System.out.println("===========\n"+selectedSeatArr.size());
+        //System.out.println("===========\n"+selectedSeatArr);
         //여기까지
 
         people=new JLabel(array[0]+"명");
@@ -126,35 +127,6 @@ public class pay extends JFrame {
         wholeMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
         top.setBorder(new TitledBorder("예매확인"));//경계선 추가
 
-        //top 패널 좌석결과 출력
-        //정렬 때문에 빈공간 채우는 버튼[기능없음] 추가
-        txt1=new JButton("");txt2=new JButton("");
-        txt3=new JButton("");txt4=new JButton("");
-        txt1.setBorderPainted(false); txt2.setBorderPainted(false);
-        txt1.setContentAreaFilled(false); txt2.setContentAreaFilled(false);
-        txt1.setFocusPainted(false); txt2.setFocusPainted(false);
-        txt3.setBorderPainted(false); txt4.setBorderPainted(false);
-        txt3.setContentAreaFilled(false); txt4.setContentAreaFilled(false);
-        txt3.setFocusPainted(false); txt4.setFocusPainted(false);
-
-
-        //
-        top.add(txt1);
-        seatInfo=new JLabel("좌석정보");
-        seatInfo.setHorizontalAlignment(JLabel.CENTER);
-        top.add(seatInfo);
-
-        top.add(txt2);
-
-        top.add(txt3);
-        BufferedReader br = new BufferedReader(new FileReader("tempSeatInfo.txt"));
-        String str;
-        str = br.readLine();
-        seatInfo2=new JLabel(str);
-        seatInfo2.setHorizontalAlignment(JLabel.CENTER);
-        top.add(seatInfo2);
-
-        top.add(txt4);
         //mid 패널 결제종류선택
 
 

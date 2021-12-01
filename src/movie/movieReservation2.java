@@ -17,7 +17,7 @@ public class movieReservation2 extends JFrame {
     ImageIcon changeIcon;
     String[] time = new String[100];
     Movie movie;
-    String code;
+    static String code;
 
     public void readMovie(String movieCode) {
         code = movieCode;
@@ -145,7 +145,7 @@ public class movieReservation2 extends JFrame {
                     la.addMouseListener(new MouseAdapter() {
                         @Override
                         public void mouseClicked(MouseEvent e) {
-                            //new Seats(m.theaterNumber+fileName);
+                            new Seats(m.theaterNumber+fileName);
                             //new Kiosk2();
                             dispose();
                         }

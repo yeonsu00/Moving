@@ -1,12 +1,11 @@
 package movie;
 
 
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
+import java.io.*;
 
 public class payFin extends JFrame {
     JScrollPane scrollPane;
@@ -14,6 +13,7 @@ public class payFin extends JFrame {
     ImageIcon icon, reset;
 
     public payFin() {
+        modifySeatTxt();
         ImageIcon icon = new ImageIcon("image/Fin.png");
         ImageIcon reset = new ImageIcon("image/reset.jpg");
 
@@ -33,43 +33,84 @@ public class payFin extends JFrame {
         ImageIcon reset2 = new ImageIcon(Imgreset2);
 
 
-        JPanel panel=new JPanel(){
-            public void paintComponent(Graphics g){
-                g.drawImage(cardImage2.getImage(),0,0,null);
+        JPanel panel = new JPanel() {
+            public void paintComponent(Graphics g) {
+                g.drawImage(cardImage2.getImage(), 0, 0, null);
                 setOpaque(false);
                 super.paintComponent(g);
             }
 
         };
-        scrollPane=new JScrollPane(panel);
+        scrollPane = new JScrollPane(panel);
         setContentPane(scrollPane);
 
-      b1 = new JButton(reset2);
-      //b1.setContentAreaFilled(false);
-      b1.setBorderPainted(false);
-      panel.setLayout(null);
-      b1.setBounds(200,200,100,50);
-      panel.add(b1);
+        b1 = new JButton(reset2);
+        //b1.setContentAreaFilled(false);
+        b1.setBorderPainted(false);
+        panel.setLayout(null);
+        b1.setBounds(200, 200, 100, 50);
+        panel.add(b1);
 
 
-      b1.addActionListener(new ActionListener() {
+        b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new Login();
+                new Kiosk2();
+                //new Login();
                 setVisible(false);
             }
-      });
+        });
 
 
         setTitle("");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500,300);
+        setSize(500, 300);
         setVisible(true);
         setLocationRelativeTo(null);
 
     }
 
+    private void modifySeatTxt() {
+        BufferedReader reader = null;
+        String[] curSeatTxt = new String[10];
+        try {
+            reader = new BufferedReader(
+                    new FileReader(pay.hallName + ".txt")
+            );
 
-    public static void main(String[] args){
+            String str;
+            int count = 0;
+            while ((str = reader.readLine()) != null) {
+                curSeatTxt[count] = str;
+                count++;
+            }
+
+            reader.close();
+
+            for (Seat e : pay.selectedSeatArr)
+            {
+                char[] seatCharArray = curSeatTxt[e.x].toCharArray();
+                seatCharArray[e.y] = '1';
+                curSeatTxt[e.x] = new String(seatCharArray);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(pay.hallName + ".txt"));
+            for (String e : curSeatTxt)
+            {
+                writer.write(e+'\n');
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void main(String[] args) {
         new payFin();
     }
 
