@@ -47,6 +47,11 @@ class PayKakao extends JFrame implements ActionListener {
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
+                try {
+                    new FileOutputStream("tempSeatInfo.txt").close();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
                 setVisible(false);
             }
         });
