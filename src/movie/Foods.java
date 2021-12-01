@@ -59,7 +59,7 @@ public class Foods {
             } else {
                 button[i].setBounds(25 + (i - 10) * 150, 300, 100, 100);
             }
-            icon[i] = new ImageIcon("C://Users//user//Desktop//객체//" + i + ".jpg");
+            icon[i] = new ImageIcon("image/" + i + ".jpg");
             button[i].setIcon(icon[i]);
 
             subject[i] = new TextField("0");
