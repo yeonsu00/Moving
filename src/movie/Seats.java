@@ -179,6 +179,7 @@ public class Seats extends JFrame implements Manageable {
 
                     pay.seatArr = checkedSeat;
                     new pay();
+                    dispose();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
