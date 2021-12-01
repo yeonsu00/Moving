@@ -4,8 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import manage.Factory;
-import manage.Manageable;
+import mgr.Factory;
+import mgr.Manageable;
 
 public class Food implements Manageable {
     Scanner scan=new Scanner(System.in);
@@ -14,10 +14,13 @@ public class Food implements Manageable {
     int price;
     ArrayList<Food> foodList = new ArrayList<>();
 
+    public Food(String code)
+    {
+        this.code=code;
+    }
     @Override
     public void read(Scanner scan) {
         // TODO Auto-generated method stub
-        code=scan.next();
         name = scan.next();
         price = scan.nextInt();
     }
