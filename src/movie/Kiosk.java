@@ -13,7 +13,7 @@ public class Kiosk {
     //static Manager<ScreeningHall> hallMgr = new Manager();
     static Manager<Seats> seatMgr = new Manager();
 
-    void run() {
+    public void run() {
 //        userMgr.readAll("members.txt", new Factory<User>() {
 //            public User create() {
 //                return new User();

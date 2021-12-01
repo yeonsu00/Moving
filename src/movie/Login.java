@@ -132,6 +132,7 @@ public class Login extends JFrame {
             } else {
                 JOptionPane.showMessageDialog(null, "아이디가 없습니다. 회원가입이 필요합니다.");
                 new Members();
+                dispose();
             }
 
         } catch (IOException ex) {
