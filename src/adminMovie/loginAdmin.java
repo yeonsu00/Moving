@@ -7,14 +7,14 @@ import java.io.*;
 import java.awt.*;
 import javax.swing.*;
 //비밀번호 존재해야 결제가능(텍스트파일내에)
-class loginAdmin extends JFrame implements ActionListener {
+public class loginAdmin extends JFrame implements ActionListener {
 
     JPanel panel;
     JLabel lblpassword, lblid;
     JButton b1, b2;
     JTextField txtpassword, txtid;
 
-    loginAdmin() {
+    public loginAdmin() {
         setTitle("Login Admin");
         setSize(400,400);
 //        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

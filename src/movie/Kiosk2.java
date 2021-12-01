@@ -2,7 +2,7 @@ package movie;
 
 import mgr.Factory;
 import mgr.Manager;
-
+import adminMovie.loginAdmin;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -73,6 +73,10 @@ public class Kiosk2 extends JFrame {
 
         jp.add(jp3);
         jp.add(jp4);
+        jp.add(new JPanel());
+        jp.add(new JPanel());
+        jp.add(new JPanel());
+        jp.add(new JPanel());
 
         jf.add("Center", jp);
         // jf.getContentPane().setBackground(Color.WHITE);
@@ -98,6 +102,13 @@ public class Kiosk2 extends JFrame {
         loginBtn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 new Login();
+                jf.dispose();
+            }
+        });
+
+        adminBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                new loginAdmin();
                 jf.dispose();
             }
         });
