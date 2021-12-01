@@ -51,12 +51,16 @@ public class Kiosk2 extends JFrame {
         JLabel la3 = new JLabel(changeIcon3);
         imgPanel.add(la3);
 
+        JButton adminBtn= new JButton("관리자");
+
+
         JPanel jp1 = new JPanel();
         jp1.setLayout(new BorderLayout());
         JPanel jp2 = new JPanel();
         jp2.setLayout(new BorderLayout());
         JPanel jp3 = new JPanel();
         jp3.setLayout(new BorderLayout());
+        JPanel jp4 = new JPanel();
 
         loginPanel.add(loginBtn);
         jp1.add("Center", loginPanel);
@@ -64,7 +68,12 @@ public class Kiosk2 extends JFrame {
 
         jp3.add("North", jp1);
         jp3.add("Center", jp2);
+
+        jp4.add("Center",adminBtn);
+
         jp.add(jp3);
+        jp.add(jp4);
+
         jf.add("Center", jp);
         // jf.getContentPane().setBackground(Color.WHITE);
 
@@ -134,12 +143,15 @@ public class Kiosk2 extends JFrame {
         JLabel la3 = new JLabel(changeIcon3);
         imgPanel.add(la3);
 
+        JButton adminBtn= new JButton("관리자");
+
         JPanel jp1 = new JPanel();
         jp1.setLayout(new BorderLayout());
         JPanel jp2 = new JPanel();
         jp2.setLayout(new BorderLayout());
         JPanel jp3 = new JPanel();
         jp3.setLayout(new BorderLayout());
+        JPanel jp4 = new JPanel();
 
 //        loginPanel.add(loginBtn);
 //        jp1.add("Center", loginPanel);
@@ -147,7 +159,9 @@ public class Kiosk2 extends JFrame {
 
         jp3.add("North", jp1);
         jp3.add("Center", jp2);
+        jp4.add("Center",adminBtn);
         jp.add(jp3);
+        jp.add(jp4);
         jf2.add("Center", jp);
         // jf.getContentPane().setBackground(Color.WHITE);
 
