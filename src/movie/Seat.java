@@ -18,6 +18,7 @@ public class Seat extends JButton implements ActionListener {
         super.addActionListener(this);
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton srcBut = (JButton) e.getSource();
