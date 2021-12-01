@@ -14,10 +14,13 @@ public class Food implements Manageable {
     int price;
     ArrayList<Food> foodList = new ArrayList<>();
 
+    public Food(String code)
+    {
+        this.code=code;
+    }
     @Override
     public void read(Scanner scan) {
         // TODO Auto-generated method stub
-        code=scan.next();
         name = scan.next();
         price = scan.nextInt();
     }

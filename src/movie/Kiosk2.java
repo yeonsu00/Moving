@@ -63,7 +63,7 @@ public class Kiosk2 extends JFrame {
         la2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new Foods().foods();
+                new Foods();
                 dispose();
             }
         });
@@ -121,7 +121,7 @@ public class Kiosk2 extends JFrame {
         la2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new Foods().foods();
+                new Foods();
                 dispose();
             }
         });
