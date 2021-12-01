@@ -14,13 +14,14 @@ public class pay extends JFrame {
     public pay() throws IOException {
         setTitle("예매확인");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel num,money,resulttxt,people,wholeMoney,totalMoney;
+        JLabel num,money,resulttxt,people,wholeMoney,totalMoney,seatInfo,seatInfo2;
         JPanel top,mid,bot;
+        JButton txt1,txt2,txt3,txt4;
         int ticket=12000;
 
 
 
-        top=new JPanel( new GridLayout(2,3));
+        top=new JPanel( new GridLayout(4,3));
         mid=new JPanel(new GridLayout(2,3));
         bot=new JPanel(new GridLayout(1,1));
 
@@ -28,6 +29,7 @@ public class pay extends JFrame {
         JRadioButton [] pay = new JRadioButton [4]; // 버튼 배열
         //패널 색 변경
         top.setBackground(Color.WHITE);
+
         mid.setBackground(Color.WHITE);
         bot.setBackground(Color.WHITE);
 
@@ -92,15 +94,16 @@ public class pay extends JFrame {
         resulttxt.setHorizontalAlignment(JLabel.CENTER);
         top.add(resulttxt);
 
-        //파일 입출력을 통한 결과출력
-        String s = null;
-        BufferedReader br = new BufferedReader(new FileReader("reservation.txt"));
-        s = br.readLine();
-        String[] array = s.split("/");
 
+
+
+
+
+        String[] array =new String[10];
         //일단 여기에 추가 했습니다
         array[0] = Integer.toString(seatArr.size());
-        System.out.println(seatArr.size());
+        System.out.println("===========\n"+seatArr.size());
+        //System.out.println("===========\n"+seatArr);
         //여기까지
 
         people=new JLabel(array[0]+"명");
@@ -123,6 +126,35 @@ public class pay extends JFrame {
         wholeMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
         top.setBorder(new TitledBorder("예매확인"));//경계선 추가
 
+        //top 패널 좌석결과 출력
+        //정렬 때문에 빈공간 채우는 버튼[기능없음] 추가
+        txt1=new JButton("");txt2=new JButton("");
+        txt3=new JButton("");txt4=new JButton("");
+        txt1.setBorderPainted(false); txt2.setBorderPainted(false);
+        txt1.setContentAreaFilled(false); txt2.setContentAreaFilled(false);
+        txt1.setFocusPainted(false); txt2.setFocusPainted(false);
+        txt3.setBorderPainted(false); txt4.setBorderPainted(false);
+        txt3.setContentAreaFilled(false); txt4.setContentAreaFilled(false);
+        txt3.setFocusPainted(false); txt4.setFocusPainted(false);
+
+
+        //
+        top.add(txt1);
+        seatInfo=new JLabel("좌석정보");
+        seatInfo.setHorizontalAlignment(JLabel.CENTER);
+        top.add(seatInfo);
+
+        top.add(txt2);
+
+        top.add(txt3);
+        BufferedReader br = new BufferedReader(new FileReader("tempSeatInfo.txt"));
+        String str;
+        str = br.readLine();
+        seatInfo2=new JLabel(str);
+        seatInfo2.setHorizontalAlignment(JLabel.CENTER);
+        top.add(seatInfo2);
+
+        top.add(txt4);
         //mid 패널 결제종류선택
 
 

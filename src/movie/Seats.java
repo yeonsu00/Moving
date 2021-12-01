@@ -10,9 +10,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -21,6 +19,7 @@ import javax.swing.*;
 public class Seats extends JFrame implements Manageable {
 
     Seat[][] seatArray;
+
 
     Seats(String hallName) {
         setTitle("자리 예매");
@@ -125,6 +124,50 @@ public class Seats extends JFrame implements Manageable {
                             if (sArr2.isChecked == true) {
                                 checkedSeat.add(sArr2);
                                 isZero = false;
+                                //이 부분부터 좌석정보 텍스트 저장입니다.
+                                System.out.println("좌석: ["+sArr2.x+"],["+sArr2.y+"]");
+                                BufferedWriter bw = new BufferedWriter(new FileWriter("tempSeatInfo.txt", true));
+                                int num=sArr2.x;
+                                String info="";
+                                switch (num) {
+                                    case 0:
+                                        info="A-"+sArr2.y+" ";
+                                        break;
+                                    case 1:
+                                        info="B-"+sArr2.y+" ";
+                                        break;
+                                    case 2:
+                                        info="C-"+sArr2.y+" ";
+                                        break;
+                                    case 3:
+                                        info="D-"+sArr2.y+" ";
+                                        break;
+                                    case 4:
+                                        info="E-"+sArr2.y+" ";
+                                        break;
+                                    case 5:
+                                        info="F-"+sArr2.y+" ";
+                                        break;
+                                    case 6:
+                                        info="G-"+sArr2.y+" ";
+                                        break;
+                                    case 7:
+                                        info="H-"+sArr2.y+" ";
+                                        break;
+                                    case 8:
+                                        info="I-"+sArr2.y+" ";
+                                        break;
+                                    case 9:
+                                        info="J-"+sArr2.y+" ";
+                                        break;
+
+
+                                    default: num = 10;
+                                        break;
+                                }
+
+                                bw.write(info);
+                                bw.close();
                             }
                         }
                     }
@@ -132,9 +175,9 @@ public class Seats extends JFrame implements Manageable {
                         JOptionPane.showMessageDialog(null, "좌석 선택을 마치세요.");
                         return;
                     }
+
                     pay.seatArr = checkedSeat;
                     new pay();
-                    dispose();
                 } catch (IOException ex) {
                     ex.printStackTrace();
                 }
