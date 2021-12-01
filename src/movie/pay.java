@@ -11,6 +11,8 @@ import java.util.*;
 public class pay extends JFrame {
     static ArrayList<Seat> selectedSeatArr;
     static String hallName;
+    static boolean isFood = false;
+    static int foodMoney = 0;
 
     public pay() throws IOException {
         setTitle("예매확인");
@@ -83,11 +85,23 @@ public class pay extends JFrame {
 
 
         //top 패널 예매결과 출력
-        num=new JLabel("총 인원");
+        String totalPeople="총 인원";
+        if (isFood==true)
+        {
+            totalPeople="매점";
+        }
+
+        num=new JLabel(totalPeople);
         num.setHorizontalAlignment(JLabel.CENTER);
         top.add(num);
 
-        seatInfo=new JLabel("좌석정보");
+        String seatOrFood="좌석정보";
+        if (isFood==true)
+        {
+            seatOrFood="음식";
+        }
+
+        seatInfo=new JLabel( seatOrFood);
         seatInfo.setHorizontalAlignment(JLabel.CENTER);
         top.add(seatInfo);
 
@@ -101,30 +115,38 @@ public class pay extends JFrame {
 
 
         String[] array =new String[10];
+        int result = 0;
         //일단 여기에 추가 했습니다
-        array[0] = Integer.toString(selectedSeatArr.size());
-        System.out.println("===========\n"+selectedSeatArr.size());
-        //System.out.println("===========\n"+selectedSeatArr);
-        //여기까지
-
-        people=new JLabel(array[0]+"명");
-        people.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
-        top.add(people);//사람 수
-
-        //top 패널 좌석결과 출력
-        BufferedReader br = new BufferedReader(new FileReader("tempSeatInfo.txt"));
-        String str;
-        str = br.readLine();
-        seatInfo2=new JLabel(str);
-        seatInfo2.setHorizontalAlignment(JLabel.CENTER);
-        top.add(seatInfo2);
-
-        int result=Integer.parseInt(array[0]);
-        //money.setHorizontalAlignment(JLabel.CENTER);
+        if (isFood==false) {
+            array[0] = Integer.toString(selectedSeatArr.size());
+            System.out.println("===========\n" + selectedSeatArr.size());
+            //System.out.println("===========\n"+selectedSeatArr);
+            //여기까지
 
 
+            people = new JLabel(array[0] + "명");
+            people.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
+            top.add(people);//사람 수
+
+            //top 패널 좌석결과 출력
+            BufferedReader br = new BufferedReader(new FileReader("tempSeatInfo.txt"));
+            String str;
+            str = br.readLine();
+            seatInfo2 = new JLabel(str);
+            seatInfo2.setHorizontalAlignment(JLabel.CENTER);
+            top.add(seatInfo2);
+
+            result = Integer.parseInt(array[0]);
+            //money.setHorizontalAlignment(JLabel.CENTER);
 
 
+        }
+        if (isFood==true)
+        {
+            ticket=1;
+            result = foodMoney;
+
+        }
         wholeMoney=new JLabel(result*ticket+"원");
         top.add(wholeMoney);//결제 필요금액
         wholeMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
