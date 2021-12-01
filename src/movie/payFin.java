@@ -13,7 +13,11 @@ public class payFin extends JFrame {
     ImageIcon icon, reset;
 
     public payFin() {
-        modifySeatTxt();
+        if (pay.isFood==false)
+        {
+            modifySeatTxt();
+        }
+
         ImageIcon icon = new ImageIcon("image/Fin.png");
         ImageIcon reset = new ImageIcon("image/reset.jpg");
 
@@ -71,7 +75,7 @@ public class payFin extends JFrame {
         setSize(500,300);
         setVisible(true);
         setLocationRelativeTo(null);
-
+        pay.isFood=false;
     }
 
     private void modifySeatTxt() {

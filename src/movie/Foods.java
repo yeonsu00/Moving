@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -28,6 +29,7 @@ public class Foods {
     String show = "";
     Scanner scan = new Scanner(System.in);
     int sum = 0;
+    int wholeMoney =0;
 
     public Foods() {
         JFrame frame = new JFrame("스낵");
@@ -117,6 +119,12 @@ public class Foods {
                     ta.setText("      상품명           가격           수량           합계\n\n");
 
                 }
+                pay.isFood=true;
+                try {
+                    new pay();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
@@ -132,6 +140,7 @@ public class Foods {
                     ta.setText("   상품명        가격        수량        합계\n\n");
 
                 }
+                pay.foodMoney=0;
             }
         });
 
@@ -203,6 +212,7 @@ public class Foods {
                     show = button[j].getActionCommand();
                     ta.append("   " + show + "       " + price[j] + "        " + count + "         " + price[j] * count
                             + "원" + "\n");
+                    pay.foodMoney += price[j] * count;
                     check[j].setEnabled(false);
                 }
             });
