@@ -1,5 +1,6 @@
 package adminMovie;
 
+import admin.adminGUI;
 import movie.Kiosk;
 
 import java.awt.event.*;
@@ -73,6 +74,7 @@ public class loginAdmin extends JFrame implements ActionListener {
                 // 정보 입력시 중복이 없으면 데이터 보냄
                 if (isOk) {
                     JOptionPane.showMessageDialog(null, "로그인이 완료되었습니다.");
+                    new adminGUI().adminGUI();
                     dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "로그인에 실패하였습니다.");
