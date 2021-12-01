@@ -54,7 +54,8 @@ public class payFin extends JFrame {
 
       b1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new Login();
+                new Kiosk2();
+                //new Login();
                 setVisible(false);
             }
       });

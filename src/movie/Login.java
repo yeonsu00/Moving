@@ -126,7 +126,9 @@ public class Login extends JFrame {
             if (isOk) {
                 JOptionPane.showMessageDialog(null, "로그인에 성공");
                 dispose();
-                new Kiosk().run();
+                //new Kiosk().run();
+                new Kiosk2(1);
+
             } else {
                 JOptionPane.showMessageDialog(null, "아이디가 없습니다. 회원가입이 필요합니다.");
                 new Members();
