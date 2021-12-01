@@ -16,12 +16,12 @@ public class pay extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel num,money,resulttxt,people,wholeMoney,totalMoney,seatInfo,seatInfo2;
         JPanel top,mid,bot;
-        JButton txt1,txt2,txt3,txt4;
+
         int ticket=12000;
 
 
 
-        top=new JPanel( new GridLayout(4,3));
+        top=new JPanel( new GridLayout(2,3));
         mid=new JPanel(new GridLayout(2,3));
         bot=new JPanel(new GridLayout(1,1));
 
@@ -86,9 +86,9 @@ public class pay extends JFrame {
         num.setHorizontalAlignment(JLabel.CENTER);
         top.add(num);
 
-        money=new JLabel("총 결제금액");
-        money.setHorizontalAlignment(JLabel.CENTER);
-        top.add(money);
+        seatInfo=new JLabel("좌석정보");
+        seatInfo.setHorizontalAlignment(JLabel.CENTER);
+        top.add(seatInfo);
 
         resulttxt=new JLabel("결제 필요금액");
         resulttxt.setHorizontalAlignment(JLabel.CENTER);
@@ -110,12 +110,15 @@ public class pay extends JFrame {
         people.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
         top.add(people);//사람 수
 
+        //top 패널 좌석결과 출력
+        BufferedReader br = new BufferedReader(new FileReader("tempSeatInfo.txt"));
+        String str;
+        str = br.readLine();
+        seatInfo2=new JLabel(str);
+        seatInfo2.setHorizontalAlignment(JLabel.CENTER);
+        top.add(seatInfo2);
 
-        String from=array[0];
         int result=Integer.parseInt(array[0]);
-        totalMoney=new JLabel(result*ticket+"원");
-        totalMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
-        top.add(totalMoney);//총 결제금액
         //money.setHorizontalAlignment(JLabel.CENTER);
 
 
@@ -126,35 +129,8 @@ public class pay extends JFrame {
         wholeMoney.setHorizontalAlignment(JLabel.CENTER);//가운데정렬
         top.setBorder(new TitledBorder("예매확인"));//경계선 추가
 
-        //top 패널 좌석결과 출력
-        //정렬 때문에 빈공간 채우는 버튼[기능없음] 추가
-        txt1=new JButton("");txt2=new JButton("");
-        txt3=new JButton("");txt4=new JButton("");
-        txt1.setBorderPainted(false); txt2.setBorderPainted(false);
-        txt1.setContentAreaFilled(false); txt2.setContentAreaFilled(false);
-        txt1.setFocusPainted(false); txt2.setFocusPainted(false);
-        txt3.setBorderPainted(false); txt4.setBorderPainted(false);
-        txt3.setContentAreaFilled(false); txt4.setContentAreaFilled(false);
-        txt3.setFocusPainted(false); txt4.setFocusPainted(false);
 
 
-        //
-        top.add(txt1);
-        seatInfo=new JLabel("좌석정보");
-        seatInfo.setHorizontalAlignment(JLabel.CENTER);
-        top.add(seatInfo);
-
-        top.add(txt2);
-
-        top.add(txt3);
-        BufferedReader br = new BufferedReader(new FileReader("tempSeatInfo.txt"));
-        String str;
-        str = br.readLine();
-        seatInfo2=new JLabel(str);
-        seatInfo2.setHorizontalAlignment(JLabel.CENTER);
-        top.add(seatInfo2);
-
-        top.add(txt4);
         //mid 패널 결제종류선택
 
 
