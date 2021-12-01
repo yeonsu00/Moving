@@ -73,6 +73,10 @@ public class Kiosk2 extends JFrame {
 
         jp.add(jp3);
         jp.add(jp4);
+        jp.add(new JPanel());
+        jp.add(new JPanel());
+        jp.add(new JPanel());
+        jp.add(new JPanel());
 
         jf.add("Center", jp);
         // jf.getContentPane().setBackground(Color.WHITE);
