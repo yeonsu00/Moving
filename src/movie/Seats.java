@@ -112,7 +112,15 @@ public class Seats extends JFrame implements Manageable {
         JPanel operButtonPanel = new JPanel(new FlowLayout());
         JButton goBack = new JButton("←");
 
+        goBack.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+        });
+
         JButton goForward = new JButton("→");
+
         goForward.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
