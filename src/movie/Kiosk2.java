@@ -38,12 +38,16 @@ public class Kiosk2 extends JFrame {
         JLabel la2 = new JLabel(changeIcon2);
 
         //
+        JPanel loginPanel = new JPanel();
+        JPanel noPanel = new JPanel();
         JButton loginBtn = new JButton("로그인 및 회원가입");
 
         panel2.add(la1);
         panel2.add(la2);
-        panel2.add(loginBtn);
+        loginPanel.add(loginBtn);
         add(panel2);
+        add(noPanel);
+        add(loginPanel);
 
         super.pack();
 
